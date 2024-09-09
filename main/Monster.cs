@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+
 public class Monster
 {
     // fields
@@ -17,5 +19,15 @@ public class Monster
         this.name = name;
 
         Console.WriteLine($"Monster initialized: {this.name}");
+    }
+
+    // methods
+    public void Attack(Player player)
+    {
+        Random random = new Random();
+        int damage = random.Next(0, this.maximumDamage);
+
+        player.CurrentHitPoints -= damage;
+        Console.WriteLine($"Monster {this.name} attacked {player.Name} for {damage} damage.");
     }
 }
