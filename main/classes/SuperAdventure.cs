@@ -1,8 +1,8 @@
 public class SuperAdventure
 {
     // Fields
-    public CurrentMonster;
-    public ThePlayer;
+    public Monster CurrentMonster;F
+    public Player ThePlayer;
 
     // Constructor
     public SuperAdventure(string currentMonster, string thePlayer)

@@ -8,7 +8,7 @@ public class Monster
     public string name;
 
     // constructor
-    public Monster(int currentHitPoints, int id, int maximumDamage, int maximumHitPoints, string name)
+    public Monster(int id, string name, int maximumHitPoints, int currentHitPoints, int maximumDamage)
     {
         this.currentHitPoints = currentHitPoints;
         this.ID = id;
