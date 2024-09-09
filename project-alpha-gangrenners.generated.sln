@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "project-alpha-gangrenners", "project-alpha-gangrenners.csproj", "{36F8E9C1-E6AB-40C2-8E4F-DC1EA2015634}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "codegrade", "codegrade\codegrade.csproj", "{B37BDAC7-9E4E-4132-92FB-84117011F182}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "project-alpha-gangrenners", "Project-Alpha-Gangrenners\project-alpha-gangrenners.csproj", "{782F3AB0-8F2E-458F-B7A3-60691CAF0A78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{36F8E9C1-E6AB-40C2-8E4F-DC1EA2015634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36F8E9C1-E6AB-40C2-8E4F-DC1EA2015634}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36F8E9C1-E6AB-40C2-8E4F-DC1EA2015634}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36F8E9C1-E6AB-40C2-8E4F-DC1EA2015634}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B37BDAC7-9E4E-4132-92FB-84117011F182}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B37BDAC7-9E4E-4132-92FB-84117011F182}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B37BDAC7-9E4E-4132-92FB-84117011F182}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B37BDAC7-9E4E-4132-92FB-84117011F182}.Release|Any CPU.Build.0 = Release|Any CPU
+		{782F3AB0-8F2E-458F-B7A3-60691CAF0A78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{782F3AB0-8F2E-458F-B7A3-60691CAF0A78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{782F3AB0-8F2E-458F-B7A3-60691CAF0A78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{782F3AB0-8F2E-458F-B7A3-60691CAF0A78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
