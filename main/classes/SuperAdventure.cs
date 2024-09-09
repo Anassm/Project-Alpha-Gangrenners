@@ -1,11 +1,11 @@
 public class SuperAdventure
 {
     // Fields
-    public Monster CurrentMonster;F
+    public Monster CurrentMonster;
     public Player ThePlayer;
 
     // Constructor
-    public SuperAdventure(string currentMonster, string thePlayer)
+    public SuperAdventure(Monster currentMonster, Player thePlayer)
     {
         this.CurrentMonster = currentMonster;
         this.ThePlayer = thePlayer;
