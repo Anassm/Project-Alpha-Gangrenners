@@ -5,10 +5,10 @@ public class Location
     public string Description;
     public Quest QuestAvailableHere;
     public Monster MonsterLivingHere;
-    public Location locationToNorth;
-    public Location locationToEast;
-    public Location locationToSouth;
-    public Location locationToWest;
+    public Location LocationToNorth;
+    public Location LocationToEast;
+    public Location LocationToSouth;
+    public Location LocationToWest;
 
 
     public Location(int id, string name, string description, Quest questAvailableHere = null, Monster monsterLivingHere = null)
@@ -18,10 +18,10 @@ public class Location
         this.Description = description;
         this.QuestAvailableHere = questAvailableHere;
         this.MonsterLivingHere = monsterLivingHere;
-        this.locationToNorth = null;
-        this.locationToEast = null;
-        this.locationToSouth = null;
-        this.locationToWest = null;
+        this.LocationToNorth = null;
+        this.LocationToEast = null;
+        this.LocationToSouth = null;
+        this.LocationToWest = null;
 
     }
 
