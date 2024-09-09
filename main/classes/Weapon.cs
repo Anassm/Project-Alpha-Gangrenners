@@ -4,10 +4,10 @@ public class Weapon
     public int MaximumDamage;
     public string Name;
 
-    public Weapon(int ID, int MaximumDamage, string Name)
+    public Weapon(int id, string name, int maximum_damage)
     {
-        this.ID = id
-        this.MaximumDamage = maxdamage
-        this.Name = name
+        this.ID = id;
+        this.MaximumDamage = maximum_damage;
+        this.Name = name;
     }
 }
