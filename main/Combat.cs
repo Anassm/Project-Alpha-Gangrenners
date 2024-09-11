@@ -47,7 +47,7 @@ public class Combat
         switch (decision)
         {
             case 1:
-                this.player.Attack(this.monster);
+                //this.player.Attack(this.monster);
                 break;
             case 2:
                 Console.WriteLine("Not implemented yet.");

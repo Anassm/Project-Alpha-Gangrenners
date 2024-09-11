@@ -3,7 +3,7 @@ public class Location
     public int ID;
     public string Name;
     public string Description;
-    public int? killCount;
+    public int killCount = 0;
     public Quest? QuestAvailableHere;
     public Monster? MonsterLivingHere;
     public Location? LocationToNorth;
@@ -23,14 +23,7 @@ public class Location
         this.LocationToEast = null;
         this.LocationToSouth = null;
         this.LocationToWest = null;
-        if (this.MonsterLivingHere != null)
-        {
-            this.killCount = 0;
-        }
-        else 
-        {
-            this.killCount = null;
-        }
+        this.killCount = 0;
 
     }
 
@@ -136,17 +129,33 @@ public class Location
         }
     }
 
-    public void Events()
+    public void Events(Player player)
     {
         if (this.MonsterLivingHere != null)
         {   
             Console.WriteLine("You have encountered a monster!");
-            //Start combat
+            Combat combat = new Combat(player, this.MonsterLivingHere);
+
         }
         else if (this.QuestAvailableHere != null)
         {
             System.Console.WriteLine("You have a quest available here!");
-            //this.QuestAvailableHere.start_menu();
+            System.Console.WriteLine("Do you want to start the quest?");
+            System.Console.WriteLine("1. Yes");
+            System.Console.WriteLine("2. No");
+            string choice = Console.ReadLine();
+            if (choice == "1")
+            {
+                this.QuestAvailableHere.start_menu();
+            }
+            else if (choice == "2")
+            {
+                System.Console.WriteLine("You have chosen not to start the quest.");
+            }
+            else
+            {
+                System.Console.WriteLine("Invalid choice");
+            }
         }
         else if (this.ID == 3)
         {
