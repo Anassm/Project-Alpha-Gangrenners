@@ -139,12 +139,18 @@ public class Location
     public void Events()
     {
         if (this.MonsterLivingHere != null)
-        {
+        {   
+            Console.WriteLine("You have encountered a monster!");
             //Start combat
         }
         else if (this.QuestAvailableHere != null)
         {
-            this.QuestAvailableHere.start_menu();
+            System.Console.WriteLine("You have a quest available here!");
+            //this.QuestAvailableHere.start_menu();
+        }
+        else if (this.ID == 3)
+        {
+
         }
     }
 
