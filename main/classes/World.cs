@@ -65,7 +65,8 @@ public static class World
             new Quest(
                 QUEST_ID_CLEAR_ALCHEMIST_GARDEN,
                 "Clear the alchemist's garden",
-                "Kill rats in the alchemist's garden ");
+                "Kill rats in the alchemist's garden ",
+                LocationByID(LOCATION_ID_ALCHEMISTS_GARDEN));//add item reward
 
 
 
@@ -73,14 +74,16 @@ public static class World
             new Quest(
                 QUEST_ID_CLEAR_FARMERS_FIELD,
                 "Clear the farmer's field",
-                "Kill snakes in the farmer's field");
+                "Kill snakes in the farmer's field",
+                LocationByID(LOCATION_ID_FARM_FIELD));//add item reward
 
 
         Quest clearSpidersForest =
-                    new Quest(
-                        QUEST_ID_COLLECT_SPIDER_SILK,
-                        "Collect spider silk",
-                        "Kill spiders in the spider forest");
+            new Quest(
+                QUEST_ID_COLLECT_SPIDER_SILK,
+                "Collect spider silk",
+                "Kill spiders in the spider forest",
+                LocationByID(LOCATION_ID_SPIDER_FIELD));//add item reward
 
 
         Quests.Add(clearAlchemistGarden);
