@@ -39,7 +39,7 @@
             Console.WriteLine("What do you want to do?");
             Console.WriteLine("1. Change directions");
             Console.WriteLine("2. Check inventory");
-            Console.WriteLine("3. Check stats");
+            Console.WriteLine("3. iets");
             Console.WriteLine("4. Quit");
             string choice = Console.ReadLine();
             if (choice == "1")
@@ -52,7 +52,7 @@
             }
             else if (choice == "3")
             {
-                //player.GetStats();
+                //player.iets();
             }
             else if (choice == "4")
             {
