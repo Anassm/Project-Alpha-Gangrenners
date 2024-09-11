@@ -3,6 +3,7 @@ public class Location
     public int ID;
     public string Name;
     public string Description;
+    public int? killCount;
     public Quest? QuestAvailableHere;
     public Monster? MonsterLivingHere;
     public Location? LocationToNorth;
@@ -22,6 +23,14 @@ public class Location
         this.LocationToEast = null;
         this.LocationToSouth = null;
         this.LocationToWest = null;
+        if (this.MonsterLivingHere != null)
+        {
+            this.killCount = 0;
+        }
+        else 
+        {
+            this.killCount = null;
+        }
 
     }
 
@@ -124,6 +133,18 @@ public class Location
         else
         {
             return null;
+        }
+    }
+
+    public void Events()
+    {
+        if (this.MonsterLivingHere != null)
+        {
+            //Start combat
+        }
+        else if (this.QuestAvailableHere != null)
+        {
+            this.QuestAvailableHere.start_menu();
         }
     }
 

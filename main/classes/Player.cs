@@ -32,7 +32,11 @@ public class Player
         Location newLocation = CurrentLocation.GetNewLocation(direction);
         CurrentLocation = newLocation;
         Console.WriteLine("You are now at: " + CurrentLocation.Name);
+        CurrentLocation.Events();
+        
     }
+
+
 
 
 }
