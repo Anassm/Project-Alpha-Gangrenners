@@ -2,6 +2,7 @@ public static class World
 {
 
     public static readonly List<Weapon> Weapons = new List<Weapon>();
+    public static readonly List<Health> Health = new List<Health>();
     public static readonly List<Monster> Monsters = new List<Monster>();
     public static readonly List<Quest> Quests = new List<Quest>();
     public static readonly List<Location> Locations = new List<Location>();
@@ -9,6 +10,10 @@ public static class World
 
     public const int WEAPON_ID_RUSTY_SWORD = 1;
     public const int WEAPON_ID_CLUB = 2;
+
+    public const int HEALTH_ID_SMALL = 1;
+    public const int HEALTH_ID_MID = 2;
+    public const int HEALTH_ID_BIG = 3;
 
     public const int MONSTER_ID_RAT = 1;
     public const int MONSTER_ID_SNAKE = 2;
@@ -31,6 +36,7 @@ public static class World
     static World()
     {
         PopulateWeapons();
+        PopulateHealth();
         PopulateMonsters();
         PopulateQuests();
         PopulateLocations();
@@ -41,6 +47,13 @@ public static class World
     {
         Weapons.Add(new Weapon(WEAPON_ID_RUSTY_SWORD, "Rusty sword", 5));
         Weapons.Add(new Weapon(WEAPON_ID_CLUB, "Club", 10));
+    }
+    
+    public static void PopulateHealth()
+    {
+        Health.Add(new Health(HEALTH_ID_SMALL, 5, "Small Health Potion"));
+        Health.Add(new Health(HEALTH_ID_MID, 10, "Normal Health Potion"));
+        Health.Add(new Health(HEALTH_ID_BIG, 15, "Big Health Potion"));
     }
 
     public static void PopulateMonsters()
