@@ -150,7 +150,22 @@ public class Location
         }
         else if (this.ID == 3)
         {
-
+            int count = 0;
+            foreach(Quest quest in World.Quests)
+            {
+                if (quest.IsDone)
+                {
+                    count++;
+                }
+            }
+            if (count >= 2)
+            {
+                this.LocationToEast = World.LocationByID(8);
+            }
+            else
+            {
+                this.LocationToEast = null;
+            }
         }
     }
 
