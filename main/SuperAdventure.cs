@@ -5,11 +5,10 @@ public class SuperAdventure
     public Player ThePlayer;
 
     // Constructor
-    public SuperAdventure(Monster currentMonster, Player thePlayer)
+    public SuperAdventure()
     {
-        this.CurrentMonster = currentMonster;
-        this.ThePlayer = thePlayer;
 
         Console.WriteLine("SuperAdventure initialized");
+
     }
 }
