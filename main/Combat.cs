@@ -48,7 +48,7 @@ public class Combat
         switch (decision)
         {
             case 1:
-                this.monster.TakeDamage(this.player.Attack);
+                this.monster.TakeDamage(this.player.Attack(this.monster));
                 break;
             case 2:
                 Console.WriteLine("Item selection not implemented yet.");
@@ -60,6 +60,6 @@ public class Combat
     {
         Console.WriteLine("Monster's turn!");
 
-        this.monster.Attack(this.player);
+        this.player.TakeDamage(this.monster.Attack(this.player));
     }
 }

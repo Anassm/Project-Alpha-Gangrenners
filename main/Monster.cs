@@ -22,7 +22,7 @@ public class Monster
     }
 
     // methods
-    public void Attack(Player player)
+    public int Attack(Player player)
     {
         Random random = new Random();
 
@@ -37,7 +37,7 @@ public class Monster
 
         Console.WriteLine($"{(critical < 10 ? "Critical!" : string.Empty)} Monster {this.name} attacked {player.Name} for {damage} damage.");
 
-        player.CurrentHitPoints -= damage;
+        return damage;
     }
 
     public void TakeDamage(int damage)
