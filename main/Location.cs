@@ -35,11 +35,11 @@ public class Location
         bool canGoSouth = (this.LocationToSouth != null);
         bool canGoWest = (this.LocationToWest != null);
         Console.WriteLine(canGoNorth ? "    N" : "    ");
-        Console.WriteLine(canGoNorth ? "    |": "    ");
+        Console.WriteLine(canGoNorth ? "    |" : "    ");
         Console.Write(canGoWest ? "W---" : "    ");
         Console.Write("|");
         Console.WriteLine(canGoEast ? "---E " : "   ");
-        Console.WriteLine(canGoSouth? "    |" : "    ");
+        Console.WriteLine(canGoSouth ? "    |" : "    ");
         Console.WriteLine(canGoSouth ? "    S" : "    ");
     }
 
@@ -132,9 +132,10 @@ public class Location
     public void Events(Player player)
     {
         if (this.MonsterLivingHere != null)
-        {   
+        {
             Console.WriteLine("You have encountered a monster!");
             Combat combat = new Combat(player, this.MonsterLivingHere);
+            combat.Start();
 
         }
         else if (this.QuestAvailableHere != null)
@@ -160,7 +161,7 @@ public class Location
         else if (this.ID == 3)
         {
             int count = 0;
-            foreach(Quest quest in World.Quests)
+            foreach (Quest quest in World.Quests)
             {
                 if (quest.IsDone)
                 {

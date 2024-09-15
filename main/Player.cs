@@ -18,7 +18,7 @@ public class Player
 
     // change location of player
     public void ChangeDirections()
-    {  
+    {
         CurrentLocation.GetMap();
         Console.WriteLine("Where do you want to go?");
         string direction = Console.ReadLine().ToUpper();
@@ -35,7 +35,26 @@ public class Player
         CurrentLocation.Events(this);
     }
 
+    public int Attack(Monster monster)
+    {
+        Random random = new Random();
 
+        int critical = random.Next(0, 100);
+        int damage = random.Next(0, this.CurrentWeapon.MaximumDamage);
 
+        // 10% chance to critical hit
+        if (critical < 10)
+        {
+            damage *= 2;
+        }
 
+        Console.WriteLine($"{(critical < 10 ? "Critical!" : string.Empty)} Player {this.Name} attacked {monster.name} for {damage} damage.");
+
+        return damage;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        this.CurrentHitPoints -= damage;
+    }
 }
