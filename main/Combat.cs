@@ -21,7 +21,7 @@ public class Combat
             this.PlayerTurn();
             if (this.monster.currentHitPoints <= 0)
             {
-                Console.WriteLine($"Congratulations! Monster {this.monster.name} defeated!");
+                Console.WriteLine($"Congratulations! Monster {this.monster.name} has been defeated!");
                 break;
             }
 
@@ -29,7 +29,8 @@ public class Combat
             if (this.player.CurrentHitPoints <= 0)
             {
                 Console.WriteLine("$You died.");
-                break;
+                // End the game (application) for now. Can be changed to restart the game, perchance respawn the player?
+                Environment.Exit(0);
             }
         }
     }
@@ -47,10 +48,10 @@ public class Combat
         switch (decision)
         {
             case 1:
-                this.player.Attack(this.monster);
+                this.monster.TakeDamage(this.player.Attack);
                 break;
             case 2:
-                Console.WriteLine("Not implemented yet.");
+                Console.WriteLine("Item selection not implemented yet.");
                 break;
         }
     }

@@ -7,9 +7,8 @@ public class SuperAdventure
     // Constructor
     public SuperAdventure()
     {
-        
 
         Console.WriteLine("SuperAdventure initialized");
-        
+
     }
 }

@@ -26,16 +26,16 @@ public class Monster
     {
         Random random = new Random();
 
-        // 10% chance to critical hit
         int critical = random.Next(0, 100);
         int damage = random.Next(0, this.maximumDamage);
 
+        // 10% chance to critical hit
         if (critical < 10)
         {
             damage *= 2;
         }
 
-        Console.WriteLine($"{(critical < 10 ? "Critical!" : String.Empty)} Monster {this.name} attacked {player.Name} for {damage} damage.");
+        Console.WriteLine($"{(critical < 10 ? "Critical!" : string.Empty)} Monster {this.name} attacked {player.Name} for {damage} damage.");
 
         player.CurrentHitPoints -= damage;
     }
