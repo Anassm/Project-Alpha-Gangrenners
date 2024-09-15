@@ -140,22 +140,34 @@ public class Location
         }
         else if (this.QuestAvailableHere != null)
         {
-            System.Console.WriteLine("You have a quest available here!");
-            System.Console.WriteLine("Do you want to start the quest?");
-            System.Console.WriteLine("1. Yes");
-            System.Console.WriteLine("2. No");
-            string choice = Console.ReadLine();
-            if (choice == "1" || choice.ToLower() == "y")
+            if (this.QuestAvailableHere.questLocation.MonsterLivingHere.currentHitPoints <= 0)
             {
                 this.QuestAvailableHere.start_menu();
             }
-            else if (choice == "2" || choice.ToLower() == "n")
+            else 
             {
-                System.Console.WriteLine("You have chosen not to start the quest.");
-            }
-            else
-            {
-                System.Console.WriteLine("Invalid choice");
+                System.Console.WriteLine("You have a quest available here!");
+                System.Console.WriteLine("Do you want to start the quest?");
+                System.Console.WriteLine("1. Yes");
+                System.Console.WriteLine("2. No");
+                string choice = Console.ReadLine();
+                //repeat until valid choice
+                do
+                {
+                    if (choice == "1" || choice.ToLower() == "y")
+                    {
+                        this.QuestAvailableHere.start_menu();
+                    }
+                    else if (choice == "2" || choice.ToLower() == "n")
+                    {
+                        System.Console.WriteLine("You have chosen not to start the quest.");
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("Invalid choice");
+                    }
+                } while (choice != "1" && choice != "2" && choice.ToLower() != "y" && choice.ToLower() != "n");
+            
             }
         }
         else if (this.ID == 3)

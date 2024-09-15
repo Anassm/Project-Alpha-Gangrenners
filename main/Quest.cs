@@ -31,18 +31,23 @@ public class Quest
 
         if (IsDone == false)
         {
-            System.Console.WriteLine($"you started the Quest {this.Name}.");
-            System.Console.WriteLine($"description:");
-            System.Console.WriteLine($"{this.Description}");
-            System.Console.WriteLine($"go to: {this.questLocation.Name}");
+
+            
             //check if enough monsters have been killed
-            if (this.questLocation.killCount >= 3)
+            if (this.questLocation.MonsterLivingHere.currentHitPoints <= 0)
             {
                 System.Console.WriteLine($"you have completed the quest.");
                 System.Console.WriteLine($"take your reward.");
                 //System.Console.WriteLine($"Reward: {this.Reward}");
                 this.IsDone = true;
                 //add item to inventory
+            }
+            else 
+            {
+                System.Console.WriteLine($"you started the Quest {this.Name}.");
+                System.Console.WriteLine($"description:");
+                System.Console.WriteLine($"{this.Description}");
+                System.Console.WriteLine($"go to: {this.questLocation.Name}");
             }
         }
         else

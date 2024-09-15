@@ -1,5 +1,6 @@
 public class Program
-{
+{   
+    
     public static void Main()
     {
         Console.WriteLine("Welcome to Project Alpha Gangrenners");
@@ -32,9 +33,11 @@ public class Program
         Console.WriteLine("Welcome " + player.Name);
         Console.WriteLine("You are now at: " + player.CurrentLocation.Name);
         player.CurrentLocation.Events(player);
-        
+
+        bool GameRunning = true;
+
         // Main game loop
-        while (true)
+        while (GameRunning)
         {
             Console.WriteLine("What do you want to do?");
             Console.WriteLine("1. Change directions");
@@ -61,6 +64,22 @@ public class Program
             else
             {
                 Console.WriteLine("Invalid choice");
+            }
+            
+            //check if 3 quests are done
+            int count = 0;
+            for (int i = 0; i < World.Quests.Count; i++)
+            {
+                if (World.Quests[i].IsDone == true)
+                {
+                    count++;   
+                }
+            }
+            if (count == 3)
+            {
+                Console.WriteLine("You have completed all quests!");
+                Console.WriteLine("You have won the game!");
+                GameRunning = false;
             }
         }
     }
