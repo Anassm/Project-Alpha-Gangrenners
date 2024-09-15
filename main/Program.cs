@@ -11,8 +11,8 @@ public class Program
         Console.WriteLine("Good luck!");
         Console.WriteLine("------------------------------------");
         Console.WriteLine("Press any key to start the game");
-        Console.ReadKey();
-        Console.Clear();
+       // Console.Read();
+       // Console.Clear();
         StartGame();
     }
 
@@ -31,7 +31,7 @@ public class Program
         // Intro
         Console.WriteLine("Welcome " + player.Name);
         Console.WriteLine("You are now at: " + player.CurrentLocation.Name);
-        player.CurrentLocation.Events();
+        player.CurrentLocation.Events(player);
         
         // Main game loop
         while (true)

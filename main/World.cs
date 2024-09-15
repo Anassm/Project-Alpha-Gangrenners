@@ -28,6 +28,7 @@ public static class World
     public const int LOCATION_ID_BRIDGE = 8;
     public const int LOCATION_ID_SPIDER_FIELD = 9;
 
+
     static World()
     {
         PopulateWeapons();
@@ -66,7 +67,7 @@ public static class World
                 QUEST_ID_CLEAR_ALCHEMIST_GARDEN,
                 "Clear the alchemist's garden",
                 "Kill rats in the alchemist's garden ",
-                LocationByID(LOCATION_ID_ALCHEMISTS_GARDEN));//add item reward
+                null);//add item reward
 
 
 
@@ -75,7 +76,7 @@ public static class World
                 QUEST_ID_CLEAR_FARMERS_FIELD,
                 "Clear the farmer's field",
                 "Kill snakes in the farmer's field",
-                LocationByID(LOCATION_ID_FARM_FIELD));//add item reward
+                null);//add item reward
 
 
         Quest clearSpidersForest =
@@ -83,7 +84,7 @@ public static class World
                 QUEST_ID_COLLECT_SPIDER_SILK,
                 "Collect spider silk",
                 "Kill spiders in the spider forest",
-                LocationByID(LOCATION_ID_SPIDER_FIELD));//add item reward
+                null);//add item reward
 
 
         Quests.Add(clearAlchemistGarden);
@@ -103,12 +104,14 @@ public static class World
 
         Location alchemistsGarden = new Location(LOCATION_ID_ALCHEMISTS_GARDEN, "Alchemist's garden", "Many plants are growing here.", null, null);
         alchemistsGarden.MonsterLivingHere = MonsterByID(MONSTER_ID_RAT);
+        QuestByID(QUEST_ID_CLEAR_ALCHEMIST_GARDEN).questLocation = alchemistsGarden;
 
         Location farmhouse = new Location(LOCATION_ID_FARMHOUSE, "Farmhouse", "There is a small farmhouse, with a farmer in front.", null, null);
         farmhouse.QuestAvailableHere = QuestByID(QUEST_ID_CLEAR_FARMERS_FIELD);
 
         Location farmersField = new Location(LOCATION_ID_FARM_FIELD, "Farmer's field", "You see rows of vegetables growing here.", null, null);
         farmersField.MonsterLivingHere = MonsterByID(MONSTER_ID_SNAKE);
+        QuestByID(QUEST_ID_CLEAR_FARMERS_FIELD).questLocation = farmersField;
 
         Location guardPost = new Location(LOCATION_ID_GUARD_POST, "Guard post", "There is a large, tough-looking guard here.", null, null);
 
@@ -117,6 +120,7 @@ public static class World
 
         Location spiderField = new Location(LOCATION_ID_SPIDER_FIELD, "Forest", "You see spider webs covering covering the trees in this forest.", null, null);
         spiderField.MonsterLivingHere = MonsterByID(MONSTER_ID_GIANT_SPIDER);
+        QuestByID(QUEST_ID_COLLECT_SPIDER_SILK).questLocation = spiderField;
 
         // Link the locations together
         home.LocationToNorth = townSquare;
