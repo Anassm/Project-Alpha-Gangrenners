@@ -144,11 +144,11 @@ public class Location
             System.Console.WriteLine("1. Yes");
             System.Console.WriteLine("2. No");
             string choice = Console.ReadLine();
-            if (choice == "1")
+            if (choice == "1" || choice.ToLower() == "y")
             {
                 this.QuestAvailableHere.start_menu();
             }
-            else if (choice == "2")
+            else if (choice == "2" || choice.ToLower() == "n")
             {
                 System.Console.WriteLine("You have chosen not to start the quest.");
             }
