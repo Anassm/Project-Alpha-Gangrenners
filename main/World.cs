@@ -3,6 +3,7 @@ public static class World
 
     public static readonly List<Weapon> Weapons = new List<Weapon>();
     public static readonly List<Health> Health = new List<Health>();
+    public static readonly List<Item> Items = new List<Item>();
     public static readonly List<Monster> Monsters = new List<Monster>();
     public static readonly List<Quest> Quests = new List<Quest>();
     public static readonly List<Location> Locations = new List<Location>();
@@ -11,9 +12,9 @@ public static class World
     public const int WEAPON_ID_RUSTY_SWORD = 1;
     public const int WEAPON_ID_CLUB = 2;
 
-    public const int HEALTH_ID_SMALL = 1;
-    public const int HEALTH_ID_MID = 2;
-    public const int HEALTH_ID_BIG = 3;
+    public const int HEALTH_ID_SMALL = 3;
+    public const int HEALTH_ID_MID = 4;
+    public const int HEALTH_ID_BIG = 5;
 
     public const int MONSTER_ID_RAT = 1;
     public const int MONSTER_ID_SNAKE = 2;
@@ -41,8 +42,17 @@ public static class World
         PopulateMonsters();
         PopulateQuests();
         PopulateLocations();
+        PopulateItems();
     }
 
+    public static void PopulateItems()
+    {
+        Items.Add(new Item(WEAPON_ID_RUSTY_SWORD, "Rusty Sword", 1, 10));
+        Items.Add(new Item(WEAPON_ID_CLUB, "Club", 0, 15));
+        Items.Add(new Item(HEALTH_ID_SMALL, "Small Health Potion", 1, 5));
+        Items.Add(new Item(HEALTH_ID_MID, "Medium Health Potion", 0, 10));
+        Items.Add(new Item(HEALTH_ID_BIG, "Big Health Potion", 0, 15));
+    }
 
     public static void PopulateWeapons()
     {
