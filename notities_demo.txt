@@ -1,0 +1,14 @@
+-Kleur in console
+	-> messages in kleur 
+	-> console clear 
+	-> Geschiedenis??? Conflict met console clear
+
+TIJDENS DEMO
+
+	-niet heel gebruiksvriendelijk 
+	-Onduidelijkheid over input. 
+	-betere map maken...
+	-Items toevoegen (INVENTORY)
+	-0 Damage --> dodge
+	-Dood is einde??? 
+	-
