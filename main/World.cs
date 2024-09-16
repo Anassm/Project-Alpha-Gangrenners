@@ -83,7 +83,6 @@ public static class World
                 null);//add item reward
 
 
-
         Quest clearFarmersField =
             new Quest(
                 QUEST_ID_CLEAR_FARMERS_FIELD,

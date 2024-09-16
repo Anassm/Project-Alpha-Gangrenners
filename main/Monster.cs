@@ -17,8 +17,6 @@ public class Monster
         this.maximumDamage = maximumDamage;
         this.maximumHitPoints = maximumHitPoints;
         this.name = name;
-
-        Console.WriteLine($"Monster initialized: {this.name}");
     }
 
     // methods
