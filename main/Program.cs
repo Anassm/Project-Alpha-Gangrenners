@@ -6,6 +6,7 @@ public class Program
         Console.WriteLine("Welcome to Project Alpha Gangrenners");
         Console.WriteLine("------------------------------------");
         Console.WriteLine("Made by: ");
+        Console.WriteLine("The Gangrenners");
         Console.WriteLine("------------------------------------");
         Console.WriteLine("The goal of this game is to complete the 3 different quests");
         Console.WriteLine("You can move around the map and fight monsters");
