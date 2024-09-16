@@ -1,7 +1,4 @@
--Kleur in console
-	-> messages in kleur 
-	-> console clear 
-	-> Geschiedenis??? Conflict met console clear
+   
 
 TIJDENS DEMO
 
@@ -11,4 +8,66 @@ TIJDENS DEMO
 	-Items toevoegen (INVENTORY)
 	-0 Damage --> dodge
 	-Dood is einde??? 
-	-
+	-Kleur in console
+		-> messages in kleur 
+		-> console clear 
+		-> Geschiedenis??? Conflict met console clear    
+
+
+RETROSPECTIVE
+
+	Anass:
+	-Iets kleinere opdrachten voor in de sprints. (lopen tegen wat dingen aan die niet afgemaakt zijn) 
+	-Allemaal goed aan de slag. Communicatie ging goed. 
+	-Iedereen zelf thuis aan de slag. Om te kijken of alles goed was. Ging prima
+	-Bijna alles af (health -> Niet aanwezig)
+	-Inventory niet af. Lang afwezig. Niet gedaan toen. Rami moest de code afmaken niet gebeurd, terwijl wel afgesproken.
+
+	-Rami werk bijhouden zou veel schelen. Is echt wel nodig
+	
+	Rami:
+	-Alles goed afgerond, op zondag. 
+	-Eerder om hulp kunnen vragen. 
+	-In weekend weg, dus niet eraan gewerkt.
+	-Geen specifiek geval om sneller hulp te vragen. Gewoon eerst googelen en dan in de groep gooien. 
+	-Verkeerde persoon om hulp gevraagd. 
+
+	-Probleem met de class zelf en de verkeerde mensen om hulp vragen
+	-Daarna weg.
+	-Gaat niet meer fout. 
+		
+
+	Roan: 
+	-opdrachten goed op tijd af. Programmeertechnisch is het op orde wat iedereen doet.
+	-Github en burn down chart up to date houden. 
+	-Inventory te laat, communicatie was niet voldoende aanwezig.
+	
+	
+	Jens: 
+	-Alles ging wel goed, tot aan het weekend. 
+	-Genaaid door inventory
+	-Deel niet af vanwege inventory.
+	-Te laat moet niet nog een keer gebeuren. 
+	-Codegrade wel bij blijven. niet teruggaan om te helpen. 
+	-Zaterdag meebezig en zondag pas bericht dat het nog steeds WIP was. 
+	-Communicatie dus belangrijk
+
+	-Project B (dus semester) niet riskeren vanwege afspreken of vergeetachtigheid van anderen. 
+
+
+	PO (Marleen): 
+	-dingen eerlijk blijven aangeven als groep, naar elkaar toe ook al is het direct.
+	-Communicatie rondom inventory
+	
+
+	ALGEMEEN:
+	-communicatie rondom afwezigheid
+	-Geen contactpersonen naast de groep.
+	-Haat naar Anass (scrummaster)
+	-Deadlines houden -> communiceren als het niet lukt.
+
+
+
+	CONCLUSIE: 
+	-AFSPRAKEN HOUDEN
+	
