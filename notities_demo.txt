@@ -38,8 +38,8 @@ RETROSPECTIVE
 		
 
 	Roan: 
-	-opdrachten goed op tijd af. Programmeertechnisch is het op orde wat iedereen doet.
-	-Github en burn down chart up to date houden. 
+	-opdrachten goed op tijd af. Programmeer technisch is het op orde wat iedereen doet.
+	-GitHub en burn down chart up to date houden. 
 	-Inventory te laat, communicatie was niet voldoende aanwezig.
 	
 	
