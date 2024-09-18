@@ -11,6 +11,8 @@ public class Location
     public Location? LocationToSouth;
     public Location? LocationToWest;
 
+    public static string playerIcon = "\U0001680B";
+
 
     public Location(int id, string name, string description, Quest? questAvailableHere = null, Monster? monsterLivingHere = null)
     {
@@ -29,7 +31,9 @@ public class Location
 
     public void GetMap()
     {
-        Console.WriteLine("You are now at: " + this.Name + ". From here you can go to:");
+        Console.Clear();
+        Console.WriteLine("You are now at: " + this.Name + ". From here you can go to these directions:");
+        Console.WriteLine("You are the red X");
         bool canGoNorth = (this.LocationToNorth != null);
         bool canGoEast = (this.LocationToEast != null);
         bool canGoSouth = (this.LocationToSouth != null);
@@ -37,10 +41,14 @@ public class Location
         Console.WriteLine(canGoNorth ? "    N" : "    ");
         Console.WriteLine(canGoNorth ? "    |" : "    ");
         Console.Write(canGoWest ? "W---" : "    ");
-        Console.Write("|");
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.Write(playerIcon);
+        Console.ResetColor();
         Console.WriteLine(canGoEast ? "---E " : "   ");
         Console.WriteLine(canGoSouth ? "    |" : "    ");
         Console.WriteLine(canGoSouth ? "    S" : "    ");
+        Console.WriteLine(" ");
+        
     }
 
     public bool CheckDirection(string NewDirection)
@@ -140,7 +148,7 @@ public class Location
         }
         else if (this.QuestAvailableHere != null)
         {
-            if (this.QuestAvailableHere.questLocation.MonsterLivingHere.currentHitPoints <= 0)
+            if (this.QuestAvailableHere.questLocation.MonsterLivingHere.CurrentHitPoints <= 0)
             {
                 this.QuestAvailableHere.start_menu();
             }

@@ -1,8 +1,8 @@
 public class Program
-{   
-    
+{
     public static void Main()
     {
+        Console.Clear();
         Console.WriteLine("Welcome to Project Alpha Gangrenners");
         Console.WriteLine("------------------------------------");
         Console.WriteLine("Made by: ");
@@ -25,6 +25,15 @@ public class Program
         // ask for player name
         Console.WriteLine("Choose your name: ");
         string name = Console.ReadLine();
+
+        if (string.IsNullOrEmpty(name))
+        {
+            name = "Player";
+        }
+
+        if (name == "AMONGUS"){
+            Location.playerIcon = "\u0D9E";
+        }
 
         // create player (WHAT HP)
         Player player = new Player(100, World.Locations[0], World.Weapons[0], 100, name);
