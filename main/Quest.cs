@@ -28,14 +28,13 @@ public class Quest
     public bool IsDone;
     //public {type} Reward;
 
-    public Quest(int id, string name, string Description, Location location, )//add reward to parameters
+    public Quest(int id, string name, string Description, Location location, string reward)//add reward to parameters
     {
         this.ID = id;
         this.Name = name;
         this.Description = Description;
         this.questLocation = location;
         this.IsDone = false;
-        this.Reward = reward;
         //this.Reward = reward;
         
     }
@@ -49,11 +48,11 @@ public class Quest
 
             
             //check if enough monsters have been killed
-            if (this.questLocation.MonsterLivingHere.currentHitPoints <= 0)
+            if (this.questLocation.MonsterLivingHere.CurrentHitPoints <= 0)
             {
                 System.Console.WriteLine($"you have completed the quest.");
                 System.Console.WriteLine($"take your reward.");
-                System.Console.WriteLine($"Reward: {this.Reward}");
+                //System.Console.WriteLine($"Reward: {this.Reward}");
                 this.IsDone = true;
                 //add item to inventory
             }
