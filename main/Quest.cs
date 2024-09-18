@@ -1,8 +1,22 @@
 using System.Data.Common;
 using System.Xml.Schema;
 /*
-start menu method
-reward method
+add the reward of the quest to inv when done
+    -add reward in world.cs to the quest objects
+        -think of rewards
+            -potion
+            -food
+                -make a consumable object
+    -make function to add item to inv?
+
+add a function to show a list of quests that are done
+    -status field per quest
+    -if true -> place in list
+
+add a function to collect gold
+    -add a balance field to player
+    -think of ways to obtain gold
+    -give standard amount of gold on quest completion?
 */
 
 public class Quest
@@ -14,7 +28,7 @@ public class Quest
     public bool IsDone;
     //public {type} Reward;
 
-    public Quest(int id, string name, string Description, Location location)//add reward to parameters
+    public Quest(int id, string name, string Description, Location location, string reward)//add reward to parameters
     {
         this.ID = id;
         this.Name = name;
@@ -34,7 +48,7 @@ public class Quest
 
             
             //check if enough monsters have been killed
-            if (this.questLocation.MonsterLivingHere.currentHitPoints <= 0)
+            if (this.questLocation.MonsterLivingHere.CurrentHitPoints <= 0)
             {
                 System.Console.WriteLine($"you have completed the quest.");
                 System.Console.WriteLine($"take your reward.");
@@ -60,4 +74,15 @@ public class Quest
         
     }
     //quest rewards
+    public void completed_quests()
+    {
+        System.Console.WriteLine($"Completed quests:");
+        foreach (Quest quest in World.Quests)
+        {
+            if (quest.IsDone==true)
+            {
+                System.Console.WriteLine($"{quest.Name}");
+            }
+        }
+    }
 }
