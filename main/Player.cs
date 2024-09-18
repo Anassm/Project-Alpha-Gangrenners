@@ -52,8 +52,8 @@ public class Player
             damage *= 2;
         }
 
-        Console.WriteLine($"{(critical < 10 ? "Critical!" : string.Empty)} Player {this.Name} attacked {monster.Name} for {damage} damage.");
         Console.WriteLine($"{monster.Name} has {monster.CurrentHitPoints}HP left.");
+        Console.WriteLine($"{(critical < 10 ? "Critical!" : string.Empty)} Player {this.Name} attacked {monster.Name} for {damage} damage.");
 
         return damage;
     }
