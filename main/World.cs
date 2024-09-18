@@ -80,7 +80,7 @@ public static class World
                 QUEST_ID_CLEAR_ALCHEMIST_GARDEN,
                 "Clear the alchemist's garden",
                 "Kill rats in the alchemist's garden ",
-                null);//add item reward
+                null,"Big Health Potion");
 
 
         Quest clearFarmersField =
@@ -88,7 +88,7 @@ public static class World
                 QUEST_ID_CLEAR_FARMERS_FIELD,
                 "Clear the farmer's field",
                 "Kill snakes in the farmer's field",
-                null);//add item reward
+                null,"Bread");
 
 
         Quest clearSpidersForest =
@@ -96,7 +96,7 @@ public static class World
                 QUEST_ID_COLLECT_SPIDER_SILK,
                 "Collect spider silk",
                 "Kill spiders in the spider forest",
-                null);//add item reward
+                null,"Spider silk");
 
 
         Quests.Add(clearAlchemistGarden);
