@@ -8,6 +8,8 @@ public class Player
     public int Experience;
     public int Balance;
 
+    public Inventory PlayerInv;
+
     // Can equipment slots better be an object or dictionary?
     //public Dictionary<string, Item> Equipment = new();
 
@@ -19,6 +21,7 @@ public class Player
         this.MaximumHitPoints = maximumHitPoints;
         this.Name = name;
         this.Balance = 25;
+        this.PlayerInv = new();
     }
 
 
