@@ -10,7 +10,7 @@ public class Combat
         this.player = player;
         this.monster = monster;
 
-        Console.WriteLine($"Combat initialized! {this.player.Name} vs {this.monster.name}");
+        Console.WriteLine($"Combat initialized! {this.player.Name} vs {this.monster.Name}");
     }
 
     // methods
@@ -19,9 +19,10 @@ public class Combat
         while (true)
         {
             this.PlayerTurn();
-            if (this.monster.currentHitPoints <= 0)
+            if (this.monster.CurrentHitPoints <= 0)
             {
-                Console.WriteLine($"Congratulations! Monster {this.monster.name} has been defeated!");
+                Console.WriteLine($"Congratulations! Monster {this.monster.Name} has been defeated! You gained {this.monster.Experience} experience.");
+                this.player.GainExperience(this.monster.Experience);
                 break;
             }
 
@@ -39,6 +40,7 @@ public class Combat
     {
         Console.WriteLine("Player's turn!");
 
+        Console.WriteLine($"You currently have {this.player.CurrentHitPoints}HP.");
         Console.WriteLine("1. Attack");
         Console.WriteLine("2. Use Item");
 
