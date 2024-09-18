@@ -33,7 +33,7 @@ public class Location
     {
         Console.Clear();
         Console.WriteLine("You are now at: " + this.Name + ". From here you can go to these directions:");
-        Console.WriteLine("You are the red X");
+        Console.WriteLine("Enter the letter of the direction");
         bool canGoNorth = (this.LocationToNorth != null);
         bool canGoEast = (this.LocationToEast != null);
         bool canGoSouth = (this.LocationToSouth != null);

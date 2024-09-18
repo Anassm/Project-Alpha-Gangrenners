@@ -49,16 +49,17 @@ public class Program
         // Main game loop
         while (GameRunning)
         {
+            Console.WriteLine("What do you want to do? Enter the number of your choice");
             if (player.CurrentHitPoints <= 0)
             {
                 GameRunning = false;
                 break;
             }
-            Console.WriteLine("What do you want to do?");
             Console.WriteLine("1. Change directions");
             Console.WriteLine("2. Check inventory");
-            Console.WriteLine("3. iets");
-            Console.WriteLine("4. Quit");
+            Console.WriteLine("3. List of quests");
+            Console.WriteLine("4. Check stats");
+            Console.WriteLine("5. Quit");
             string choice = Console.ReadLine();
             if (choice == "1")
             {
@@ -70,9 +71,13 @@ public class Program
             }
             else if (choice == "3")
             {
-                //player.iets();
+                Quest.completed_quests();
             }
             else if (choice == "4")
+            {
+                //stats   
+            }
+            else if (choice == "5")
             {
                 Console.WriteLine("You have not completed all quests yet");
                 Console.WriteLine("Keep going!");
