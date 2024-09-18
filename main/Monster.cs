@@ -1,22 +1,22 @@
-using System.Security.Cryptography;
-
 public class Monster
 {
     // fields
-    public int currentHitPoints;
+    public int CurrentHitPoints;
     public int ID;
-    public int maximumDamage;
-    public int maximumHitPoints;
-    public string name;
+    public int MaximumDamage;
+    public int MaximumHitPoints;
+    public string Name;
+    public int Experience;
 
     // constructor
-    public Monster(int id, string name, int maximumHitPoints, int currentHitPoints, int maximumDamage)
+    public Monster(int id, string name, int maximumHitPoints, int currentHitPoints, int maximumDamage, int experience)
     {
-        this.currentHitPoints = currentHitPoints;
+        this.CurrentHitPoints = currentHitPoints;
         this.ID = id;
-        this.maximumDamage = maximumDamage;
-        this.maximumHitPoints = maximumHitPoints;
-        this.name = name;
+        this.MaximumDamage = maximumDamage;
+        this.MaximumHitPoints = maximumHitPoints;
+        this.Name = name;
+        this.Experience = experience;
     }
 
     // methods
@@ -25,7 +25,7 @@ public class Monster
         Random random = new Random();
 
         int critical = random.Next(0, 100);
-        int damage = random.Next(0, this.maximumDamage);
+        int damage = random.Next(0, this.MaximumDamage);
 
         // 10% chance to critical hit
         if (critical < 10)
@@ -33,13 +33,13 @@ public class Monster
             damage *= 2;
         }
 
-        Console.WriteLine($"{(critical < 10 ? "Critical!" : string.Empty)} Monster {this.name} attacked {player.Name} for {damage} damage.");
+        Console.WriteLine($"{(critical < 10 ? "Critical!" : string.Empty)} Monster {this.Name} attacked {player.Name} for {damage} damage.");
 
         return damage;
     }
 
     public void TakeDamage(int damage)
     {
-        this.currentHitPoints -= damage;
+        this.CurrentHitPoints -= damage;
     }
 }
