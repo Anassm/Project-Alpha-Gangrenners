@@ -8,15 +8,6 @@ add the reward of the quest to inv when done
             -food
                 -make a consumable object
     -make function to add item to inv?
-
-add a function to show a list of quests that are done
-    -status field per quest
-    -if true -> place in list
-
-add a function to collect gold
-    -add a balance field to player
-    -think of ways to obtain gold
-    -give standard amount of gold on quest completion?
 */
 
 public class Quest
