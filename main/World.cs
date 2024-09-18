@@ -47,11 +47,11 @@ public static class World
 
     public static void PopulateItems()
     {
-        Items.Add(new Item(WEAPON_ID_RUSTY_SWORD, "Rusty Sword", 1, 10));
-        Items.Add(new Item(WEAPON_ID_CLUB, "Club", 0, 15));
-        Items.Add(new Item(HEALTH_ID_SMALL, "Small Health Potion", 1, 5));
-        Items.Add(new Item(HEALTH_ID_MID, "Medium Health Potion", 0, 10));
-        Items.Add(new Item(HEALTH_ID_BIG, "Big Health Potion", 0, 15));
+        Items.Add(new Item(WEAPON_ID_RUSTY_SWORD, "Rusty Sword", 1, 10, 'W'));
+        Items.Add(new Item(WEAPON_ID_CLUB, "Club", 0, 15, 'W'));
+        Items.Add(new Item(HEALTH_ID_SMALL, "Small Health Potion", 1, 5, 'P'));
+        Items.Add(new Item(HEALTH_ID_MID, "Medium Health Potion", 0, 10, 'P'));
+        Items.Add(new Item(HEALTH_ID_BIG, "Big Health Potion", 0, 15, 'P'));
     }
 
     public static void PopulateWeapons()
