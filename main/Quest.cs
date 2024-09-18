@@ -65,7 +65,7 @@ public class Quest
         
     }
     //quest rewards
-    public void completed_quests()
+    public static void completed_quests()
     {
         System.Console.WriteLine($"Completed quests:");
         foreach (Quest quest in World.Quests)
