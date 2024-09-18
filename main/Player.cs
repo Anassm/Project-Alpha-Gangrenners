@@ -5,6 +5,10 @@ public class Player
     public Weapon CurrentWeapon;
     public int MaximumHitPoints;
     public string Name;
+    public int Experience;
+
+    // Can equipment slots better be an object or dictionary?
+    public Dictionary<string, Item> Equipment = new();
 
     public Player(int currentHitPoints, Location currentLocation, Weapon currentWeapon, int maximumHitPoints, string name)
     {
@@ -48,7 +52,8 @@ public class Player
             damage *= 2;
         }
 
-        Console.WriteLine($"{(critical < 10 ? "Critical!" : string.Empty)} Player {this.Name} attacked {monster.name} for {damage} damage.");
+        Console.WriteLine($"{(critical < 10 ? "Critical!" : string.Empty)} Player {this.Name} attacked {monster.Name} for {damage} damage.");
+        Console.WriteLine($"{monster.Name} has {monster.CurrentHitPoints}HP left.");
 
         return damage;
     }
@@ -56,5 +61,11 @@ public class Player
     public void TakeDamage(int damage)
     {
         this.CurrentHitPoints -= damage;
+    }
+
+    public void GainExperience(int experience)
+    {
+        Console.WriteLine($"Player {this.Name} gained {experience} experience.");
+        this.Experience += experience;
     }
 }

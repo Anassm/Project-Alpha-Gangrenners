@@ -49,7 +49,7 @@ public static class World
         Weapons.Add(new Weapon(WEAPON_ID_RUSTY_SWORD, "Rusty sword", 5));
         Weapons.Add(new Weapon(WEAPON_ID_CLUB, "Club", 10));
     }
-    
+
     public static void PopulateHealth()
     {
         Health.Add(new Health(HEALTH_ID_SMALL, 5, "Small Health Potion"));
@@ -59,13 +59,13 @@ public static class World
 
     public static void PopulateMonsters()
     {
-        Monster rat = new Monster(MONSTER_ID_RAT, "rat", 1, 3, 3);
+        Monster rat = new Monster(MONSTER_ID_RAT, "rat", 1, 3, 3, 5);
 
 
-        Monster snake = new Monster(MONSTER_ID_SNAKE, "snake", 10, 7, 7);
+        Monster snake = new Monster(MONSTER_ID_SNAKE, "snake", 10, 7, 7, 5);
 
 
-        Monster giantSpider = new Monster(MONSTER_ID_GIANT_SPIDER, "giant spider", 3, 10, 10);
+        Monster giantSpider = new Monster(MONSTER_ID_GIANT_SPIDER, "giant spider", 3, 10, 10, 10);
 
 
         Monsters.Add(rat);
