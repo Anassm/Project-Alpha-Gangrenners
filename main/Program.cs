@@ -67,7 +67,100 @@ public class Program
             }
             else if (choice == "2")
             {
+<<<<<<< Updated upstream
                 //player.GetInventory();
+=======
+                player.Inv.OpenInventory();
+                GroupedItem? mainitem = null;
+                Console.WriteLine("Would you like too switch your main weapon?");
+                string mainweapon = Console.ReadLine();
+                int count = 0;
+                if (mainweapon == "yes" || mainweapon == "YES" || mainweapon == "y" || mainweapon == "Y")
+                {
+                    foreach (GroupedItem groupeditem in player.Inv.Inv)
+                    {
+                        count++;
+                        Console.WriteLine($"{count} {groupeditem.Item.Name}");
+                    }
+                    Console.WriteLine("choose a number.");
+                    int choiceItem = Convert.ToInt32(Console.ReadLine());
+                    switch(choiceItem)
+                    {
+                        case 1:
+                            bool switchitemone = false;
+                            GroupedItem? grItemone = null; 
+                            int countone = 0; 
+                            foreach (GroupedItem item in player.Inv.Inv)
+                            {
+                                countone++;
+                                if (countone == 2)
+                                {
+                                    switchitemone = true;
+                                    grItemone = item;
+                                }
+                            }
+                            if (switchitemone == true)
+                            {
+                                player.Inv.SwitchItem(grItemone.Item.Name);
+                            }
+                            break;
+                        case 2:
+                            bool switchitemtwo = false;
+                            GroupedItem? grItemtwo = null; 
+                            int counttwo = 0; 
+                            foreach (GroupedItem item in player.Inv.Inv)
+                            {
+                                counttwo++;
+                                if (counttwo == 2)
+                                {
+                                    switchitemtwo = true;
+                                    grItemtwo = item;
+                                }
+                            }
+                            if (switchitemtwo == true)
+                            {
+                                player.Inv.SwitchItem(grItemtwo.Item.Name);
+                            }
+                            break;
+                        case 3:
+                            bool switchitemthree = false;
+                            GroupedItem? grItemthree = null; 
+                            int countthree = 0; 
+                            foreach (GroupedItem item in player.Inv.Inv)
+                            {
+                                countthree++;
+                                if (countthree == 2)
+                                {
+                                    switchitemthree = true;
+                                    grItemthree = item;
+                                }
+                            }
+                            if (switchitemthree == true)
+                            {
+                                player.Inv.SwitchItem(grItemthree.Item.Name);
+                            }
+                            break;
+                        case 4:
+                            bool switchitemfour = false;
+                            GroupedItem? grItemfour = null; 
+                            int countfour = 0; 
+                            foreach (GroupedItem item in player.Inv.Inv)
+                            {
+                                countfour++;
+                                if (countfour == 2)
+                                {
+                                    switchitemfour = true;
+                                    grItemfour = item;
+                                }
+                            }
+                            if (switchitemfour == true)
+                            {
+                                player.Inv.SwitchItem(grItemfour.Item.Name);
+                            }
+                            break;
+                    };
+                }
+>>>>>>> Stashed changes
             }
             else if (choice == "3")
             {
@@ -101,15 +194,15 @@ public class Program
             }
             
             //check if 3 quests are done
-            int count = 0;
+            int countnumber = 0;
             for (int i = 0; i < World.Quests.Count; i++)
             {
                 if (World.Quests[i].IsDone == true)
                 {
-                    count++;   
+                    countnumber++;   
                 }
             }
-            if (count == 3)
+            if (countnumber == 3)
             {
                 Console.WriteLine("You have completed all quests!");
                 Console.WriteLine("You have won the game!");
