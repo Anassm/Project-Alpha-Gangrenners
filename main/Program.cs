@@ -2,6 +2,7 @@ public class Program
 {
     public static void Main()
     {
+        
         Console.Clear();
         Console.WriteLine("Welcome to Project Alpha Gangrenners");
         Console.WriteLine("------------------------------------");
@@ -13,8 +14,8 @@ public class Program
         Console.WriteLine("Good luck!");
         Console.WriteLine("------------------------------------");
         Console.WriteLine("Press any key to start the game");
-       // Console.Read();
-       // Console.Clear();
+        Console.Read();
+        Console.Clear();
         StartGame();
     }
 
@@ -123,7 +124,7 @@ public class Program
         Console.WriteLine("");
         Console.WriteLine("");
         Console.WriteLine("");
-        Console.ForegroundColor = ConsoleColor.DarkRed;
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine(" GGGGG   OOO   OOO   DDDD   BBBB   Y   Y  EEEEE ");
         Console.WriteLine("G       O   O O   O  D   D  B   B   Y Y   E     ");
         Console.WriteLine("G  GGG  O   O O   O  D   D  BBBB     Y    EEEEE ");
