@@ -154,6 +154,8 @@ public class Location
                 {
                     player.Inv.AddItem(this.QuestAvailableHere.Reward, this.QuestAvailableHere.quantity_reward);
                 }
+                this.QuestAvailableHere.start_menu();
+
             }
             else 
             {

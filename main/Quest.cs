@@ -20,7 +20,7 @@ public class Quest
     public Item Reward;
     public int quantity_reward;
 
-     public Quest(int id, string name, string Description, Location location, Item reward, int quantity)//add reward to parameterss
+    public Quest(int id, string name, string Description, Location location, Item reward, int quantity)//add reward to parameters
     {
         this.ID = id;
         this.Name = name;
@@ -47,6 +47,7 @@ public class Quest
                 System.Console.WriteLine($"take your reward.");
                 System.Console.WriteLine($"Reward: {this.Reward.Name}");
                 this.IsDone = true;
+                
             }
             else 
             {
