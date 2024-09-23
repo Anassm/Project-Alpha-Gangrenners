@@ -8,6 +8,7 @@ public class Player
     public int Balance;
     public Item Weapon1 = World.Items[0];
     public Item? Weapon2;
+    public Inventory Inv;
 
 
     public Player(int currentHitPoints, Location currentLocation, int maximumHitPoints, string name)
@@ -18,6 +19,8 @@ public class Player
         MaximumHitPoints = maximumHitPoints;
         Name = name;
         Balance = 25;
+        Inv = new Inventory();
+        Inv.AddItem(World.Items[0], 1);
     }
 
 
@@ -46,7 +49,17 @@ public class Player
         Random random = new Random();
 
         int critical = random.Next(0, 100);
-        int damage = (int)(random.Next(1, 10) * (Weapon1.Damage_Multiplier + (Weapon2.Damage_Multiplier - 1)));
+        int damage = 0;
+        if (Weapon2 == null)
+        {
+            damage = (int)(random.Next(1, 10) * (Weapon1.Damage_Multiplier));
+        }
+        else
+        {
+            damage = (int)(random.Next(1, 10) * (Weapon1.Damage_Multiplier + (Weapon2.Damage_Multiplier - 1)));
+        }
+
+        
 
         // 10% chance to critical hit
         if (critical < 10)
