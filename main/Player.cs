@@ -6,8 +6,8 @@ public class Player
     public string Name;
     public int Experience;
     public int Balance;
-    public Item weapon1;
-    public Item? weapon2;
+    public Item Weapon1;
+    public Item? Weapon2;
 
 
     public Player(int currentHitPoints, Location currentLocation, int maximumHitPoints, string name, Item weapon1, Item? weapon2)
@@ -48,7 +48,7 @@ public class Player
         Random random = new Random();
 
         int critical = random.Next(0, 100);
-        int damage = random.Next(0, 10) * (Weapon1.Damage_Multiplier + (weapon2.Damage_Multiplier - 1));
+        int damage = (int)(random.Next(1, 10) * (Weapon1.Damage_Multiplier + (Weapon2.Damage_Multiplier - 1)));
 
         // 10% chance to critical hit
         if (critical < 10)
