@@ -28,16 +28,23 @@ public class Player
     {
         CurrentLocation.GetMap();
         Text.Info("Where do you want to go?");
-        string direction = Console.ReadLine().ToUpper();
+        string direction = (Console.ReadLine() ?? string.Empty).ToUpper();
         bool validDirection = CurrentLocation.CheckDirection(direction);
         while (!validDirection)
         {
             Text.Info("Where do you want to go?");
-            direction = Console.ReadLine().ToUpper();
+            direction = (Console.ReadLine() ?? string.Empty).ToUpper();
             validDirection = CurrentLocation.CheckDirection(direction);
         }
-        Location newLocation = CurrentLocation.GetNewLocation(direction);
-        CurrentLocation = newLocation;
+        Location? newLocation = CurrentLocation.GetNewLocation(direction);
+        if (newLocation != null)
+        {
+            CurrentLocation = newLocation;
+        }
+        else
+        {
+            Text.Warning("The new location is invalid.");
+        }
         Console.Clear();
         Console.WriteLine("You are now at: " + CurrentLocation.Name);
         Text.nl();
