@@ -42,19 +42,13 @@ public class Combat
         Console.WriteLine("Player's turn!");
 
         Console.WriteLine($"You currently have {this.player.CurrentHitPoints}HP.");
-        Console.WriteLine("1. Attack");
-        Console.WriteLine("2. Use Item");
-
-        Console.Write("Choose 1 or 2: ");
+        Console.WriteLine("Press 1 to Attack");
         int decision = Convert.ToInt32(Console.ReadLine() ?? "1");
 
         switch (decision)
         {
             case 1:
                 this.monster.TakeDamage(this.player.Attack(this.monster));
-                break;
-            case 2:
-                Console.WriteLine("Item selection not implemented yet.");
                 break;
         }
     }
