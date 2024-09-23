@@ -12,7 +12,6 @@ public class Player
 
     // Can equipment slots better be an object or dictionary?
     //public Dictionary<string, Item> Equipment = new();
-
     public Player(int currentHitPoints, Location currentLocation, Weapon currentWeapon, int maximumHitPoints, string name)
     {
         this.CurrentHitPoints = currentHitPoints;
