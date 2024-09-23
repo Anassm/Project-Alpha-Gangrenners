@@ -6,11 +6,11 @@ public class Player
     public string Name;
     public int Experience;
     public int Balance;
-    public Item Weapon1;
+    public Item Weapon1 = World.Items[0];
     public Item? Weapon2;
 
 
-    public Player(int currentHitPoints, Location currentLocation, int maximumHitPoints, string name, Item weapon1, Item? weapon2)
+    public Player(int currentHitPoints, Location currentLocation, int maximumHitPoints, string name)
 
     {
         CurrentHitPoints = currentHitPoints;
@@ -18,8 +18,6 @@ public class Player
         MaximumHitPoints = maximumHitPoints;
         Name = name;
         Balance = 25;
-        Weapon1 = weapon1;
-        Weapon2 = weapon2;
     }
 
 
