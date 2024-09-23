@@ -167,10 +167,11 @@ public class Location
                 Text.Info("Do you want to start the quest?");
                 Text.Options("1. Yes");
                 Text.Options("2. No");
-                string choice = Console.ReadLine() ?? string.Empty;
+                string choice = "";
                 //repeat until valid choice
                 do
                 {
+                    choice = Console.ReadLine() ?? string.Empty;
                     if (choice == "1" || choice.ToLower() == "y")
                     {
                         this.QuestAvailableHere.start_menu();
