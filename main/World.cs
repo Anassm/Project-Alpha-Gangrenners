@@ -13,6 +13,7 @@ public static class World
     public const int ITEM_ID_HEALTH_MID = 4;
     public const int ITEM_ID_HEALTH_BIG = 5;
     public const int ITEM_ID_BREAD = 6;
+    public const int ITEM_ID_SPIDER_SILK = 7;
 
     public const int MONSTER_ID_RAT = 1;
     public const int MONSTER_ID_SNAKE = 2;
@@ -49,6 +50,8 @@ public static class World
         Items.Add(new Item(ITEM_ID__HEALTH_SMALL, "Small Health Potion", 1, 5));
         Items.Add(new Item(ITEM_ID_HEALTH_MID, "Normal Health Potion", 1, 10));
         Items.Add(new Item(ITEM_ID_HEALTH_BIG, "Big Health Potion", 1, 15));
+        Items.Add(new Item(ITEM_ID_BREAD, "Bread", 1, 7));
+        Items.Add(new Item(ITEM_ID_SPIDER_SILK, "Spider silk", 1, 0));
     }
 
     public static void PopulateMonsters()
@@ -74,7 +77,7 @@ public static class World
                 QUEST_ID_CLEAR_ALCHEMIST_GARDEN,
                 "Clear the alchemist's garden",
                 "Kill rats in the alchemist's garden ",
-                null,"Big Health Potion");
+                null, Items[2], 20);
 
 
         Quest clearFarmersField =
@@ -82,7 +85,7 @@ public static class World
                 QUEST_ID_CLEAR_FARMERS_FIELD,
                 "Clear the farmer's field",
                 "Kill snakes in the farmer's field",
-                null,"Bread");
+                null, Items[5], 2);
 
 
         Quest clearSpidersForest =
@@ -90,7 +93,7 @@ public static class World
                 QUEST_ID_COLLECT_SPIDER_SILK,
                 "Collect spider silk",
                 "Kill spiders in the spider forest",
-                null,"Spider silk");
+                null, Items[6], 100);
 
 
         Quests.Add(clearAlchemistGarden);

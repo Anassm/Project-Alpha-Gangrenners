@@ -68,7 +68,7 @@ public class Program
             }
             else if (choice == "2")
             {
-                //player.GetInventory();
+                player.Inv.OpenInventory();
             }
             else if (choice == "3")
             {
