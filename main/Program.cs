@@ -14,8 +14,7 @@ public class Program
         Console.WriteLine("Good luck!");
         Console.WriteLine("------------------------------------");
         Console.WriteLine("Press any key to start the game");
-        Console.Read();
-        Console.Clear();
+        Console.WriteLine("");
         StartGame();
     }
 
@@ -56,11 +55,12 @@ public class Program
                 GameRunning = false;
                 break;
             }
-            Console.WriteLine("1. Change directions");
-            Console.WriteLine("2. Check inventory");
-            Console.WriteLine("3. List of quests");
-            Console.WriteLine("4. Check stats");
-            Console.WriteLine("5. Quit");
+            Text.nl();
+            Text.Options("1. Change directions");
+            Text.Options("2. Check inventory");
+            Text.Options("3. List of quests");
+            Text.Options("4. Check stats");
+            Text.Options("5. Quit");
             string choice = Console.ReadLine();
             if (choice == "1")
             {
@@ -80,11 +80,11 @@ public class Program
             }
             else if (choice == "5")
             {
-                Console.WriteLine("You have not completed all quests yet");
-                Console.WriteLine("Keep going!");
-                Console.WriteLine("Are you sure you want to quit?");
-                Console.WriteLine("1. Yes");
-                Console.WriteLine("2. No");
+                
+                Text.Warning("You have not completed all quests yet");
+                Text.Warning("Are you sure you want to quit?");
+                Text.Options("1. Yes");
+                Text.Options("2. No");
                 string quit = Console.ReadLine().ToLower();
                 if (quit == "1" || quit == "Yes" || quit == "y")
                 {   
@@ -98,7 +98,7 @@ public class Program
             }
             else
             {
-                Console.WriteLine("Invalid choice");
+                Text.Warning("Invalid choice");
             }
             
             //check if 3 quests are done
@@ -112,8 +112,8 @@ public class Program
             }
             if (count == 3)
             {
-                Console.WriteLine("You have completed all quests!");
-                Console.WriteLine("You have won the game!");
+                Text.GoodNews("You have completed all quests!");
+                Text.GoodNews("You have won the game!");
                 GameRunning = false;
             }
 
@@ -125,10 +125,10 @@ public class Program
             Console.Clear();
         }
         
-        Console.WriteLine("Thank you for playing!");
-        Console.WriteLine("");
-        Console.WriteLine("");
-        Console.WriteLine("");
+        Text.Info("Thank you for playing!");
+        Text.nl();
+        Text.nl();
+        Text.nl(); 
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine(" GGGGG   OOO   OOO   DDDD   BBBB   Y   Y  EEEEE ");
         Console.WriteLine("G       O   O O   O  D   D  B   B   Y Y   E     ");

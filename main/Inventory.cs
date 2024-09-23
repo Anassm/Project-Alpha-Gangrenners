@@ -40,11 +40,13 @@ public class Inventory
 
     public void OpenInventory()
     {
-        System.Console.WriteLine($"Inventory:");
-        System.Console.WriteLine($"ITEM : QUANTITY");
+        Text.nl();
+        Text.Info($"Inventory:");
+        Text.Info($"ITEM : QUANTITY");
         foreach (GroupedItem groupeditem in this.Inv)
         {
-            System.Console.WriteLine($"{groupeditem.Item.Name} : {groupeditem.Quantity}");
+            Text.Info($"{groupeditem.Item.Name} : {groupeditem.Quantity}");
         }
+        Text.nl();
     }
 }

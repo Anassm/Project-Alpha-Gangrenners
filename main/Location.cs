@@ -33,7 +33,7 @@ public class Location
     {
         Console.Clear();
         Console.WriteLine("You are now at: " + this.Name + ". From here you can go to these directions:");
-        Console.WriteLine("Enter the letter of the direction");
+        Text.nl();
         bool canGoNorth = (this.LocationToNorth != null);
         bool canGoEast = (this.LocationToEast != null);
         bool canGoSouth = (this.LocationToSouth != null);
@@ -47,7 +47,9 @@ public class Location
         Console.WriteLine(canGoEast ? "---E " : "   ");
         Console.WriteLine(canGoSouth ? "    |" : "    ");
         Console.WriteLine(canGoSouth ? "    S" : "    ");
-        Console.WriteLine(" ");
+        Text.nl();
+        Console.WriteLine("Enter the letter of the direction");
+        Text.nl();
         
     }
 
@@ -57,12 +59,12 @@ public class Location
         {
             if (this.LocationToNorth != null)
             {
-                Console.WriteLine("You are now moving to the North");
+                Text.Info("You are now moving to the North");
                 return true;
             }
             else
             {
-                Console.WriteLine("You cannot go to the North");
+                Text.Alert("You cannot go to the North");
                 return false;
             }
         }
@@ -70,12 +72,12 @@ public class Location
         {
             if (this.LocationToEast != null)
             {
-                Console.WriteLine("You are now moving to the East");
+                Text.Info("You are now moving to the East");
                 return true;
             }
             else
             {
-                Console.WriteLine("You cannot go to the East");
+                Text.Alert("You cannot go to the East");
                 return false;
             }
         }
@@ -83,12 +85,12 @@ public class Location
         {
             if (this.LocationToSouth != null)
             {
-                Console.WriteLine("You are now moving to the South");
+                Text.Info("You are now moving to the South");
                 return true;
             }
             else
             {
-                Console.WriteLine("You cannot go to the South");
+                Text.Alert("You cannot go to the South");
                 return false;
             }
         }
@@ -96,18 +98,18 @@ public class Location
         {
             if (this.LocationToWest != null)
             {
-                Console.WriteLine("You are now moving to the West");
+                Text.Info("You are now moving to the West");
                 return true;
             }
             else
             {
-                Console.WriteLine("You cannot go to the West");
+                Text.Alert("You cannot go to the West");
                 return false;
             }
         }
         else
         {
-            Console.WriteLine("Invalid direction");
+            Text.Alert("Invalid direction");
             return false;
         }
 
@@ -141,7 +143,7 @@ public class Location
     {
         if (this.MonsterLivingHere != null && this.MonsterLivingHere.CurrentHitPoints > 0)
         {
-            Console.WriteLine("You have encountered a monster!");
+            Text.Warning("You have encountered a monster!");
             Combat combat = new Combat(player, this.MonsterLivingHere);
             combat.Start();
 
@@ -159,10 +161,10 @@ public class Location
             }
             else 
             {
-                System.Console.WriteLine("You have a quest available here!");
-                System.Console.WriteLine("Do you want to start the quest?");
-                System.Console.WriteLine("1. Yes");
-                System.Console.WriteLine("2. No");
+                Text.Info("You have a quest available here!");
+                Text.Info("Do you want to start the quest?");
+                Text.Options("1. Yes");
+                Text.Options("2. No");
                 string choice = Console.ReadLine();
                 //repeat until valid choice
                 do
@@ -173,11 +175,11 @@ public class Location
                     }
                     else if (choice == "2" || choice.ToLower() == "n")
                     {
-                        System.Console.WriteLine("You have chosen not to start the quest.");
+                        Text.Info("You have chosen not to start the quest.");
                     }
                     else
                     {
-                        System.Console.WriteLine("Invalid choice");
+                        Text.Alert("Invalid choice");
                     }
                 } while (choice != "1" && choice != "2" && choice.ToLower() != "y" && choice.ToLower() != "n");
             

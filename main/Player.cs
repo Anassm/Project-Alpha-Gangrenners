@@ -10,7 +10,6 @@ public class Player
     public Item? Weapon2;
     public Inventory Inv;
 
-
     public Player(int currentHitPoints, Location currentLocation, int maximumHitPoints, string name)
 
     {
@@ -28,19 +27,20 @@ public class Player
     public void ChangeDirections()
     {
         CurrentLocation.GetMap();
-        Console.WriteLine("Where do you want to go?");
+        Text.Info("Where do you want to go?");
         string direction = Console.ReadLine().ToUpper();
         bool validDirection = CurrentLocation.CheckDirection(direction);
         while (!validDirection)
         {
-            Console.WriteLine("Where do you want to go?");
+            Text.Info("Where do you want to go?");
             direction = Console.ReadLine().ToUpper();
             validDirection = CurrentLocation.CheckDirection(direction);
         }
         Location newLocation = CurrentLocation.GetNewLocation(direction);
         CurrentLocation = newLocation;
+        Console.Clear();
         Console.WriteLine("You are now at: " + CurrentLocation.Name);
-        Console.WriteLine("");
+        Text.nl();
         CurrentLocation.Events(this);
     }
 
@@ -58,17 +58,14 @@ public class Player
         {
             damage = (int)(random.Next(1, 10) * (Weapon1.Damage_Multiplier + (Weapon2.Damage_Multiplier - 1)));
         }
-
-        
-
         // 10% chance to critical hit
         if (critical < 10)
         {
             damage *= 2;
         }
 
-        Console.WriteLine($"{monster.Name} has {monster.CurrentHitPoints}HP left.");
-        Console.WriteLine($"{(critical < 10 ? "Critical!" : string.Empty)} Player {Name} attacked {monster.Name} for {damage} damage.");
+        Text.Info($"{monster.Name} has {monster.CurrentHitPoints}HP left.");
+        Text.Warning($"{(critical < 10 ? "Critical!" : string.Empty)} Player {Name} attacked {monster.Name} for {damage} damage.");
 
         return damage;
     }
@@ -80,7 +77,7 @@ public class Player
 
     public void GainExperience(int experience)
     {
-        Console.WriteLine($"Player {Name} gained {experience} experience.");
+        Text.GoodNews($"Player {Name} gained {experience} experience.");
         Experience += experience;
     }
 
