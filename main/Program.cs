@@ -2,6 +2,7 @@ public class Program
 {
     public static void Main()
     {
+        
         Console.Clear();
         Console.WriteLine("Welcome to Project Alpha Gangrenners");
         Console.WriteLine("------------------------------------");
@@ -13,8 +14,8 @@ public class Program
         Console.WriteLine("Good luck!");
         Console.WriteLine("------------------------------------");
         Console.WriteLine("Press any key to start the game");
-       // Console.Read();
-       // Console.Clear();
+        Console.Read();
+        Console.Clear();
         StartGame();
     }
 
@@ -36,7 +37,7 @@ public class Program
         }
 
         // create player (WHAT HP)
-        Player player = new Player(100, World.Locations[0], World.Weapons[0], 100, name);
+        Player player = new Player(100, World.Locations[0], 100, name);
         
 
         // Intro
@@ -49,11 +50,17 @@ public class Program
         // Main game loop
         while (GameRunning)
         {
-            Console.WriteLine("What do you want to do?");
+            Console.WriteLine("What do you want to do? Enter the number of your choice");
+            if (player.CurrentHitPoints <= 0)
+            {
+                GameRunning = false;
+                break;
+            }
             Console.WriteLine("1. Change directions");
             Console.WriteLine("2. Check inventory");
-            Console.WriteLine("3. iets");
-            Console.WriteLine("4. Quit");
+            Console.WriteLine("3. List of quests");
+            Console.WriteLine("4. Check stats");
+            Console.WriteLine("5. Quit");
             string choice = Console.ReadLine();
             if (choice == "1")
             {
@@ -65,11 +72,29 @@ public class Program
             }
             else if (choice == "3")
             {
-                //player.iets();
+                Quest.completed_quests();
             }
             else if (choice == "4")
             {
-                break;
+                //stats   
+            }
+            else if (choice == "5")
+            {
+                Console.WriteLine("You have not completed all quests yet");
+                Console.WriteLine("Keep going!");
+                Console.WriteLine("Are you sure you want to quit?");
+                Console.WriteLine("1. Yes");
+                Console.WriteLine("2. No");
+                string quit = Console.ReadLine().ToLower();
+                if (quit == "1" || quit == "Yes" || quit == "y")
+                {   
+                    
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
             }
             else
             {
@@ -91,7 +116,30 @@ public class Program
                 Console.WriteLine("You have won the game!");
                 GameRunning = false;
             }
+
+                
+            
         }
+        if (player.CurrentHitPoints >= 0)
+        {
+            Console.Clear();
+        }
+        
+        Console.WriteLine("Thank you for playing!");
+        Console.WriteLine("");
+        Console.WriteLine("");
+        Console.WriteLine("");
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine(" GGGGG   OOO   OOO   DDDD   BBBB   Y   Y  EEEEE ");
+        Console.WriteLine("G       O   O O   O  D   D  B   B   Y Y   E     ");
+        Console.WriteLine("G  GGG  O   O O   O  D   D  BBBB     Y    EEEEE ");
+        Console.WriteLine("G   G   O   O O   O  D   D  B   B    Y    E     ");
+        Console.WriteLine(" GGGGG   OOO   OOO   DDDD   BBBB     Y    EEEEE ");
+        Console.ResetColor();
+        Console.WriteLine("");
+        Console.WriteLine("");
+        Console.WriteLine("");
+
     }
 
 }

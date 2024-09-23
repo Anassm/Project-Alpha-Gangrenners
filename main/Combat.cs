@@ -29,9 +29,10 @@ public class Combat
             this.MonsterTurn();
             if (this.player.CurrentHitPoints <= 0)
             {
-                Console.WriteLine("$You died.");
+                Console.Clear();
+                Console.WriteLine("You died.");
                 // End the game (application) for now. Can be changed to restart the game, perchance respawn the player?
-                Environment.Exit(0);
+                break;
             }
         }
     }
