@@ -9,7 +9,9 @@ public class Player
     public Item weapon1;
     public Item? weapon2;
 
+
     public Player(int currentHitPoints, Location currentLocation, int maximumHitPoints, string name, Item weapon1, Item? weapon2)
+
     {
         CurrentHitPoints = currentHitPoints;
         CurrentLocation = currentLocation;

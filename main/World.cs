@@ -1,19 +1,18 @@
 public static class World
 {
 
-    public static readonly List<Weapon> Weapons = new List<Weapon>();
-    public static readonly List<Health> Health = new List<Health>();
+    public static readonly List<Item> Items = new List<Item>();
     public static readonly List<Monster> Monsters = new List<Monster>();
     public static readonly List<Quest> Quests = new List<Quest>();
     public static readonly List<Location> Locations = new List<Location>();
     public static readonly Random RandomGenerator = new Random();
 
-    public const int WEAPON_ID_RUSTY_SWORD = 1;
-    public const int WEAPON_ID_CLUB = 2;
-
-    public const int HEALTH_ID_SMALL = 1;
-    public const int HEALTH_ID_MID = 2;
-    public const int HEALTH_ID_BIG = 3;
+    public const int ITEM_ID_RUSTY_SWORD = 1;
+    public const int ITEM_ID_CLUB = 2;
+    public const int ITEM_ID__HEALTH_SMALL = 3;
+    public const int ITEM_ID_HEALTH_MID = 4;
+    public const int ITEM_ID_HEALTH_BIG = 5;
+    public const int ITEM_ID_BREAD = 6;
 
     public const int MONSTER_ID_RAT = 1;
     public const int MONSTER_ID_SNAKE = 2;
@@ -36,25 +35,20 @@ public static class World
 
     static World()
     {
-        PopulateWeapons();
-        PopulateHealth();
+        PopulateItems();
         PopulateMonsters();
         PopulateQuests();
         PopulateLocations();
     }
 
 
-    public static void PopulateWeapons()
+    public static void PopulateItems()
     {
-        Weapons.Add(new Weapon(WEAPON_ID_RUSTY_SWORD, "Rusty sword", 5));
-        Weapons.Add(new Weapon(WEAPON_ID_CLUB, "Club", 10));
-    }
-
-    public static void PopulateHealth()
-    {
-        Health.Add(new Health(HEALTH_ID_SMALL, 5, "Small Health Potion"));
-        Health.Add(new Health(HEALTH_ID_MID, 10, "Normal Health Potion"));
-        Health.Add(new Health(HEALTH_ID_BIG, 15, "Big Health Potion"));
+        Items.Add(new Item(ITEM_ID_RUSTY_SWORD , "Rusty sword", 1, 0));
+        Items.Add(new Item(ITEM_ID_CLUB , "Club", 1.2, 0));
+        Items.Add(new Item(ITEM_ID__HEALTH_SMALL, "Small Health Potion", 1, 5));
+        Items.Add(new Item(ITEM_ID_HEALTH_MID, "Normal Health Potion", 1, 10));
+        Items.Add(new Item(ITEM_ID_HEALTH_BIG, "Big Health Potion", 1, 15));
     }
 
     public static void PopulateMonsters()
@@ -184,21 +178,6 @@ public static class World
 
         return null;
     }
-
-    public static Weapon WeaponByID(int id)
-    {
-        foreach (Weapon item in Weapons)
-        {
-            if (item.ID == id)
-            {
-                return item;
-            }
-        }
-
-        return null;
-    }
-
-
 
     public static Monster MonsterByID(int id)
     {
