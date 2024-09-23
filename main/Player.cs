@@ -65,7 +65,7 @@ public class Player
         }
 
         Text.Info($"{monster.Name} has {monster.CurrentHitPoints}HP left.");
-        Text.Warning($"{(critical < 10 ? "Critical!" : string.Empty)} Player {Name} attacked {monster.Name} for {damage} damage.");
+        Text.Warning($"{(critical < 10 ? "Critical! " : string.Empty)}Player {Name} attacked {monster.Name} for {damage} damage.");
 
         return damage;
     }
@@ -84,5 +84,19 @@ public class Player
     public void Get_Gold(int gold)
     {
         Balance += gold;
+    }
+
+    public void Stats()
+    {
+        Text.Info($"Player: {Name}");
+        Text.Info($"HP: {CurrentHitPoints}/{MaximumHitPoints}");
+        Text.Info($"Experience: {Experience}");
+        Text.Info($"Gold: {Balance}");
+        Text.Info($"Weapon 1: {Weapon1.Name}");
+        if (Weapon2 != null)
+        {
+            Text.Info($"Weapon 2: {Weapon2.Name}");
+        }
+        Inv.OpenInventory();
     }
 }

@@ -15,12 +15,12 @@ public class Quest
     public int ID;
     public string Name;
     public string Description;
-    public Location questLocation;
+    public Location? questLocation;
     public bool IsDone;
     public Item Reward;
     public int quantity_reward;
 
-    public Quest(int id, string name, string Description, Location location, Item reward, int quantity)//add reward to parameters
+    public Quest(int id, string name, string Description, Location? location, Item reward, int quantity)//add reward to parameters
     {
         this.ID = id;
         this.Name = name;
@@ -41,20 +41,30 @@ public class Quest
 
             
             //check if enough monsters have been killed
-            if (this.questLocation.MonsterLivingHere.CurrentHitPoints <= 0)
+            if (questLocation != null && questLocation.MonsterLivingHere != null && questLocation.MonsterLivingHere.CurrentHitPoints <= 0)
             {
-                Text.GoodNews($"you have completed the quest.");
-                Text.GoodNews($"take your reward.");
+                Text.GoodNews($"You have completed the quest.");
+                Text.GoodNews($"Take your reward.");
                 Text.GoodNews($"Reward: {this.Reward.Name}");
+                Text.nl();
                 this.IsDone = true;
                 
             }
             else 
             {
-                Text.Info($"you started the Quest {this.Name}.");
-                Text.Warning($"description:");
+
+                Text.Info($"You started the Quest {this.Name}.");
+                Text.Warning($"Description:");
                 Text.Warning($"{this.Description}");
-                Text.Warning($"go to: \n{this.questLocation.Name}");
+                if (this.questLocation != null)
+                {
+                    Text.Warning($"Go to: \n{this.questLocation.Name}");
+                }
+                else
+                {
+                    Text.Alert("This quest has no location.");
+                }
+                Text.nl();
             }
         }
         else
@@ -75,7 +85,7 @@ public class Quest
         {
             if (quest.IsDone==true)
             {
-                System.Console.WriteLine($"- {quest.Name}");
+                Text.Warning($"- {quest.Name}");
             }
             else
             {
@@ -85,6 +95,7 @@ public class Quest
         if (count == World.Quests.Count)
         {
             Text.Warning("No quests completed yet");
+            Text.nl();
         }
         
         Text.Info($"Not completed quests:");
@@ -92,8 +103,9 @@ public class Quest
         {
             if (quest.IsDone==false)
             {
-                System.Console.WriteLine($"- {quest.Name}");
+                Text.Warning($"- {quest.Name}");
             }
         }
+        Text.nl();
     }
 }

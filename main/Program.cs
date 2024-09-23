@@ -24,7 +24,7 @@ public class Program
     {
         // ask for player name
         Console.WriteLine("Choose your name: ");
-        string name = Console.ReadLine();
+        string name = Console.ReadLine() ?? string.Empty;
 
         if (string.IsNullOrEmpty(name))
         {
@@ -61,7 +61,7 @@ public class Program
             Text.Options("3. List of quests");
             Text.Options("4. Check stats");
             Text.Options("5. Quit");
-            string choice = Console.ReadLine();
+            string choice = Console.ReadLine() ?? string.Empty;
             if (choice == "1")
             {
                 player.ChangeDirections();
@@ -76,7 +76,7 @@ public class Program
             }
             else if (choice == "4")
             {
-                //stats   
+                player.Stats(); 
             }
             else if (choice == "5")
             {
@@ -85,7 +85,7 @@ public class Program
                 Text.Warning("Are you sure you want to quit?");
                 Text.Options("1. Yes");
                 Text.Options("2. No");
-                string quit = Console.ReadLine().ToLower();
+                string quit = (Console.ReadLine() ?? string.Empty).ToLower();
                 if (quit == "1" || quit == "Yes" || quit == "y")
                 {   
                     
@@ -125,11 +125,11 @@ public class Program
             Console.Clear();
         }
         
-        Text.Info("Thank you for playing!");
+        Text.Color("Thank you for playing!", ConsoleColor.Magenta);
         Text.nl();
         Text.nl();
         Text.nl(); 
-        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.ForegroundColor = ConsoleColor.Magenta;
         Console.WriteLine(" GGGGG   OOO   OOO   DDDD   BBBB   Y   Y  EEEEE ");
         Console.WriteLine("G       O   O O   O  D   D  B   B   Y Y   E     ");
         Console.WriteLine("G  GGG  O   O O   O  D   D  BBBB     Y    EEEEE ");

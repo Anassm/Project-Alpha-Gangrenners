@@ -150,7 +150,9 @@ public class Location
         }
         else if (this.QuestAvailableHere != null)
         {
-            if (this.QuestAvailableHere.questLocation.MonsterLivingHere.CurrentHitPoints <= 0)
+            if (this.QuestAvailableHere.questLocation != null && 
+                this.QuestAvailableHere.questLocation.MonsterLivingHere != null && 
+                this.QuestAvailableHere.questLocation.MonsterLivingHere.CurrentHitPoints <= 0)
             {
                 if (this.QuestAvailableHere.IsDone == false)
                 {
@@ -165,7 +167,7 @@ public class Location
                 Text.Info("Do you want to start the quest?");
                 Text.Options("1. Yes");
                 Text.Options("2. No");
-                string choice = Console.ReadLine();
+                string choice = Console.ReadLine() ?? string.Empty;
                 //repeat until valid choice
                 do
                 {

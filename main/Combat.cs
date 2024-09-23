@@ -10,7 +10,7 @@ public class Combat
         this.player = player;
         this.monster = monster;
 
-        Text.Color($"Combat initialized! {this.player.Name} vs {this.monster.Name}", ConsoleColor.White);
+        Text.Warning($"{this.player.Name} vs {this.monster.Name}");
     }
 
     // methods
