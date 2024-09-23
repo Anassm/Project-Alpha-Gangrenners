@@ -11,7 +11,7 @@ public class Inventory
 
     public void AddItem(Item item, int amount)
     {
-        GroupedItem alreadyAddedItem = this.Inv.Find(thing => thing.Item.ID == item.ID);
+        GroupedItem? alreadyAddedItem = this.Inv.Find(thing => thing.Item.ID == item.ID);
         if (alreadyAddedItem != null)
         {
             for (int i = 0; i < amount; i++)
@@ -26,7 +26,7 @@ public class Inventory
         }
     }
 
-    public Item Get_Item(string name)
+    public Item? Get_Item(string name)
     {
         foreach (GroupedItem groupeditem in Inv)
         {
@@ -40,11 +40,13 @@ public class Inventory
 
     public void OpenInventory()
     {
-        System.Console.WriteLine($"Inventory:");
-        System.Console.WriteLine($"ITEM : QUANTITY");
+        Text.nl();
+        Text.Info($"Inventory:");
+        Text.Info($"ITEM : QUANTITY");
         foreach (GroupedItem groupeditem in this.Inv)
         {
-            System.Console.WriteLine($"{groupeditem.Item.Name} : {groupeditem.Quantity}");
+            Text.Warning($"{groupeditem.Item.Name} : {groupeditem.Quantity}");
         }
+        Text.nl();
     }
 }

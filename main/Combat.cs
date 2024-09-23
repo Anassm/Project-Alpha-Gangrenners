@@ -10,7 +10,7 @@ public class Combat
         this.player = player;
         this.monster = monster;
 
-        Console.WriteLine($"Combat initialized! {this.player.Name} vs {this.monster.Name}");
+        Text.Warning($"{this.player.Name} vs {this.monster.Name}");
     }
 
     // methods
@@ -21,7 +21,7 @@ public class Combat
             this.PlayerTurn();
             if (this.monster.CurrentHitPoints <= 0)
             {
-                Console.WriteLine($"Congratulations! Monster {this.monster.Name} has been defeated! You gained {this.monster.Experience} experience.");
+                Text.GoodNews($"Congratulations! Monster {this.monster.Name} has been defeated! You gained {this.monster.Experience} experience.");
                 this.player.GainExperience(this.monster.Experience);
                 break;
             }
@@ -30,7 +30,7 @@ public class Combat
             if (this.player.CurrentHitPoints <= 0)
             {
                 Console.Clear();
-                Console.WriteLine("You died.");
+                Text.Alert("You died.");
                 // End the game (application) for now. Can be changed to restart the game, perchance respawn the player?
                 break;
             }
@@ -55,7 +55,7 @@ public class Combat
 
     public void MonsterTurn()
     {
-        Console.WriteLine("Monster's turn!");
+        Text.Info("Monster's turn!");
 
         this.player.TakeDamage(this.monster.Attack(this.player));
     }
