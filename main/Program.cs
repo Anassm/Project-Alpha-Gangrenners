@@ -36,7 +36,7 @@ public class Program
         }
 
         // create player (WHAT HP)
-        Player player = new Player(100, World.Locations[0], World.Weapons[0], 100, name);
+        Player player = new Player(100, World.Locations[0], 100, name);
         
 
         // Intro
