@@ -14,8 +14,7 @@ public class Program
         Console.WriteLine("Good luck!");
         Console.WriteLine("------------------------------------");
         Console.WriteLine("Press any key to start the game");
-        Console.Read();
-        Console.Clear();
+        Console.WriteLine("");
         StartGame();
     }
 
@@ -56,11 +55,12 @@ public class Program
                 GameRunning = false;
                 break;
             }
-            Console.WriteLine("1. Change directions");
-            Console.WriteLine("2. Check inventory");
-            Console.WriteLine("3. List of quests");
-            Console.WriteLine("4. Check stats");
-            Console.WriteLine("5. Quit");
+            Text.nl();
+            Text.Options("1. Change directions");
+            Text.Options("2. Check inventory");
+            Text.Options("3. List of quests");
+            Text.Options("4. Check stats");
+            Text.Options("5. Quit");
             string choice = Console.ReadLine();
             if (choice == "1")
             {
@@ -68,7 +68,7 @@ public class Program
             }
             else if (choice == "2")
             {
-                //player.GetInventory();
+                player.Inv.OpenInventory();
             }
             else if (choice == "3")
             {

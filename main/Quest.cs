@@ -17,16 +17,18 @@ public class Quest
     public string Description;
     public Location questLocation;
     public bool IsDone;
-    //public {type} Reward;
+    public Item Reward;
+    public int quantity_reward;
 
-    public Quest(int id, string name, string Description, Location location, string reward)//add reward to parameters
+     public Quest(int id, string name, string Description, Location location, Item reward, int quantity)//add reward to parameterss
     {
         this.ID = id;
         this.Name = name;
         this.Description = Description;
         this.questLocation = location;
         this.IsDone = false;
-        //this.Reward = reward;
+        this.Reward = reward;
+        this.quantity_reward = quantity;
         
     }
 
@@ -43,9 +45,8 @@ public class Quest
             {
                 System.Console.WriteLine($"you have completed the quest.");
                 System.Console.WriteLine($"take your reward.");
-                //System.Console.WriteLine($"Reward: {this.Reward}");
+                System.Console.WriteLine($"Reward: {this.Reward.Name}");
                 this.IsDone = true;
-                //add item to inventory
             }
             else 
             {

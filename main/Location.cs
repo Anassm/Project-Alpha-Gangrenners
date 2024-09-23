@@ -139,7 +139,7 @@ public class Location
 
     public void Events(Player player)
     {
-        if (this.MonsterLivingHere != null)
+        if (this.MonsterLivingHere != null && this.MonsterLivingHere.CurrentHitPoints > 0)
         {
             Console.WriteLine("You have encountered a monster!");
             Combat combat = new Combat(player, this.MonsterLivingHere);
@@ -150,7 +150,10 @@ public class Location
         {
             if (this.QuestAvailableHere.questLocation.MonsterLivingHere.CurrentHitPoints <= 0)
             {
-                this.QuestAvailableHere.start_menu();
+                if (this.QuestAvailableHere.IsDone == false)
+                {
+                    player.Inv.AddItem(this.QuestAvailableHere.Reward, this.QuestAvailableHere.quantity_reward);
+                }
             }
             else 
             {
