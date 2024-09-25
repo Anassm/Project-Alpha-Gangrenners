@@ -1,19 +1,19 @@
 public static class World
 {
 
-    public static readonly List<Weapon> Weapons = new List<Weapon>();
-    public static readonly List<Health> Health = new List<Health>();
+    public static readonly List<Item> Items = new List<Item>();
     public static readonly List<Monster> Monsters = new List<Monster>();
     public static readonly List<Quest> Quests = new List<Quest>();
     public static readonly List<Location> Locations = new List<Location>();
     public static readonly Random RandomGenerator = new Random();
 
-    public const int WEAPON_ID_RUSTY_SWORD = 1;
-    public const int WEAPON_ID_CLUB = 2;
-
-    public const int HEALTH_ID_SMALL = 1;
-    public const int HEALTH_ID_MID = 2;
-    public const int HEALTH_ID_BIG = 3;
+    public const int ITEM_ID_RUSTY_SWORD = 1;
+    public const int ITEM_ID_CLUB = 2;
+    public const int ITEM_ID__HEALTH_SMALL = 3;
+    public const int ITEM_ID_HEALTH_MID = 4;
+    public const int ITEM_ID_HEALTH_BIG = 5;
+    public const int ITEM_ID_BREAD = 6;
+    public const int ITEM_ID_SPIDER_SILK = 7;
 
     public const int MONSTER_ID_RAT = 1;
     public const int MONSTER_ID_SNAKE = 2;
@@ -36,36 +36,33 @@ public static class World
 
     static World()
     {
-        PopulateWeapons();
-        PopulateHealth();
+        PopulateItems();
         PopulateMonsters();
         PopulateQuests();
         PopulateLocations();
     }
 
 
-    public static void PopulateWeapons()
+    public static void PopulateItems()
     {
-        Weapons.Add(new Weapon(WEAPON_ID_RUSTY_SWORD, "Rusty sword", 5));
-        Weapons.Add(new Weapon(WEAPON_ID_CLUB, "Club", 10));
-    }
-
-    public static void PopulateHealth()
-    {
-        Health.Add(new Health(HEALTH_ID_SMALL, 5, "Small Health Potion"));
-        Health.Add(new Health(HEALTH_ID_MID, 10, "Normal Health Potion"));
-        Health.Add(new Health(HEALTH_ID_BIG, 15, "Big Health Potion"));
+        Items.Add(new Item(ITEM_ID_RUSTY_SWORD , "Rusty sword", 1, 0));
+        Items.Add(new Item(ITEM_ID_CLUB , "Club", 1.2, 0));
+        Items.Add(new Item(ITEM_ID__HEALTH_SMALL, "Small Health Potion", 1, 5));
+        Items.Add(new Item(ITEM_ID_HEALTH_MID, "Normal Health Potion", 1, 10));
+        Items.Add(new Item(ITEM_ID_HEALTH_BIG, "Big Health Potion", 1, 15));
+        Items.Add(new Item(ITEM_ID_BREAD, "Bread", 1, 7));
+        Items.Add(new Item(ITEM_ID_SPIDER_SILK, "Spider silk", 1, 0));
     }
 
     public static void PopulateMonsters()
     {
-        Monster rat = new Monster(MONSTER_ID_RAT, "rat", 1, 3, 3, 5);
+        Monster rat = new Monster(MONSTER_ID_RAT, "rat", 1, 10, 10, 5);
 
 
-        Monster snake = new Monster(MONSTER_ID_SNAKE, "snake", 10, 7, 7, 5);
+        Monster snake = new Monster(MONSTER_ID_SNAKE, "snake", 10, 15, 15, 5);
 
 
-        Monster giantSpider = new Monster(MONSTER_ID_GIANT_SPIDER, "giant spider", 3, 10, 10, 10);
+        Monster giantSpider = new Monster(MONSTER_ID_GIANT_SPIDER, "giant spider", 3, 20, 20, 10);
 
 
         Monsters.Add(rat);
@@ -80,7 +77,7 @@ public static class World
                 QUEST_ID_CLEAR_ALCHEMIST_GARDEN,
                 "Clear the alchemist's garden",
                 "Kill rats in the alchemist's garden ",
-                null,"Big Health Potion");
+                null, Items[2], 20);
 
 
         Quest clearFarmersField =
@@ -88,7 +85,7 @@ public static class World
                 QUEST_ID_CLEAR_FARMERS_FIELD,
                 "Clear the farmer's field",
                 "Kill snakes in the farmer's field",
-                null,"Bread");
+                null, Items[5], 2);
 
 
         Quest clearSpidersForest =
@@ -96,7 +93,7 @@ public static class World
                 QUEST_ID_COLLECT_SPIDER_SILK,
                 "Collect spider silk",
                 "Kill spiders in the spider forest",
-                null,"Spider silk");
+                null, Items[6], 100);
 
 
         Quests.Add(clearAlchemistGarden);
@@ -116,14 +113,22 @@ public static class World
 
         Location alchemistsGarden = new Location(LOCATION_ID_ALCHEMISTS_GARDEN, "Alchemist's garden", "Many plants are growing here.", null, null);
         alchemistsGarden.MonsterLivingHere = MonsterByID(MONSTER_ID_RAT);
-        QuestByID(QUEST_ID_CLEAR_ALCHEMIST_GARDEN).questLocation = alchemistsGarden;
+        Quest? alchemistGardenQuest = QuestByID(QUEST_ID_CLEAR_ALCHEMIST_GARDEN);
+        if (alchemistGardenQuest != null)
+        {
+            alchemistGardenQuest.questLocation = alchemistsGarden;
+        }
 
         Location farmhouse = new Location(LOCATION_ID_FARMHOUSE, "Farmhouse", "There is a small farmhouse, with a farmer in front.", null, null);
         farmhouse.QuestAvailableHere = QuestByID(QUEST_ID_CLEAR_FARMERS_FIELD);
 
         Location farmersField = new Location(LOCATION_ID_FARM_FIELD, "Farmer's field", "You see rows of vegetables growing here.", null, null);
         farmersField.MonsterLivingHere = MonsterByID(MONSTER_ID_SNAKE);
-        QuestByID(QUEST_ID_CLEAR_FARMERS_FIELD).questLocation = farmersField;
+        Quest? farmersFieldQuest = QuestByID(QUEST_ID_CLEAR_FARMERS_FIELD);
+        if (farmersFieldQuest != null)
+        {
+            farmersFieldQuest.questLocation = farmersField;
+        }
 
         Location guardPost = new Location(LOCATION_ID_GUARD_POST, "Guard post", "There is a large, tough-looking guard here.", null, null);
 
@@ -132,7 +137,11 @@ public static class World
 
         Location spiderField = new Location(LOCATION_ID_SPIDER_FIELD, "Forest", "You see spider webs covering covering the trees in this forest.", null, null);
         spiderField.MonsterLivingHere = MonsterByID(MONSTER_ID_GIANT_SPIDER);
-        QuestByID(QUEST_ID_COLLECT_SPIDER_SILK).questLocation = spiderField;
+        Quest? spiderSilkQuest = QuestByID(QUEST_ID_COLLECT_SPIDER_SILK);
+        if (spiderSilkQuest != null)
+        {
+            spiderSilkQuest.questLocation = spiderField;
+        }
 
         // Link the locations together
         home.LocationToNorth = townSquare;
@@ -172,7 +181,7 @@ public static class World
         Locations.Add(spiderField);
     }
 
-    public static Location LocationByID(int id)
+    public static Location? LocationByID(int id)
     {
         foreach (Location location in Locations)
         {
@@ -185,22 +194,7 @@ public static class World
         return null;
     }
 
-    public static Weapon WeaponByID(int id)
-    {
-        foreach (Weapon item in Weapons)
-        {
-            if (item.ID == id)
-            {
-                return item;
-            }
-        }
-
-        return null;
-    }
-
-
-
-    public static Monster MonsterByID(int id)
+    public static Monster? MonsterByID(int id)
     {
         foreach (Monster monster in Monsters)
         {
@@ -213,7 +207,7 @@ public static class World
         return null;
     }
 
-    public static Quest QuestByID(int id)
+    public static Quest? QuestByID(int id)
     {
         foreach (Quest quest in Quests)
         {

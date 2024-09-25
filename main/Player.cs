@@ -2,23 +2,24 @@ public class Player
 {
     public int CurrentHitPoints;
     public Location CurrentLocation;
-    public Weapon CurrentWeapon;
     public int MaximumHitPoints;
     public string Name;
     public int Experience;
     public int Balance;
+    public Item Weapon1 = World.Items[0];
+    public Item? Weapon2;
+    public Inventory Inv;
 
-    // Can equipment slots better be an object or dictionary?
-    //public Dictionary<string, Item> Equipment = new();
+    public Player(int currentHitPoints, Location currentLocation, int maximumHitPoints, string name)
 
-    public Player(int currentHitPoints, Location currentLocation, Weapon currentWeapon, int maximumHitPoints, string name)
     {
-        this.CurrentHitPoints = currentHitPoints;
-        this.CurrentLocation = currentLocation;
-        this.CurrentWeapon = currentWeapon;
-        this.MaximumHitPoints = maximumHitPoints;
-        this.Name = name;
-        this.Balance = 25;
+        CurrentHitPoints = currentHitPoints;
+        CurrentLocation = currentLocation;
+        MaximumHitPoints = maximumHitPoints;
+        Name = name;
+        Balance = 25;
+        Inv = new Inventory();
+        Inv.AddItem(World.Items[0], 1);
     }
 
 
@@ -26,18 +27,27 @@ public class Player
     public void ChangeDirections()
     {
         CurrentLocation.GetMap();
-        Console.WriteLine("Where do you want to go?");
-        string direction = Console.ReadLine().ToUpper();
+        Text.Info("Where do you want to go?");
+        string direction = (Console.ReadLine() ?? string.Empty).ToUpper();
         bool validDirection = CurrentLocation.CheckDirection(direction);
         while (!validDirection)
         {
-            Console.WriteLine("Where do you want to go?");
-            direction = Console.ReadLine().ToUpper();
+            Text.Info("Where do you want to go?");
+            direction = (Console.ReadLine() ?? string.Empty).ToUpper();
             validDirection = CurrentLocation.CheckDirection(direction);
         }
-        Location newLocation = CurrentLocation.GetNewLocation(direction);
-        CurrentLocation = newLocation;
+        Location? newLocation = CurrentLocation.GetNewLocation(direction);
+        if (newLocation != null)
+        {
+            CurrentLocation = newLocation;
+        }
+        else
+        {
+            Text.Warning("The new location is invalid.");
+        }
+        Console.Clear();
         Console.WriteLine("You are now at: " + CurrentLocation.Name);
+        Text.nl();
         CurrentLocation.Events(this);
     }
 
@@ -46,33 +56,54 @@ public class Player
         Random random = new Random();
 
         int critical = random.Next(0, 100);
-        int damage = random.Next(0, this.CurrentWeapon.MaximumDamage);
-
+        int damage = 0;
+        if (Weapon2 == null)
+        {
+            damage = (int)(random.Next(1, 10) * (Weapon1.Damage_Multiplier));
+        }
+        else
+        {
+            damage = (int)(random.Next(1, 10) * (Weapon1.Damage_Multiplier + (Weapon2.Damage_Multiplier - 1)));
+        }
         // 10% chance to critical hit
         if (critical < 10)
         {
             damage *= 2;
         }
 
-        Console.WriteLine($"{monster.Name} has {monster.CurrentHitPoints}HP left.");
-        Console.WriteLine($"{(critical < 10 ? "Critical!" : string.Empty)} Player {this.Name} attacked {monster.Name} for {damage} damage.");
+        Text.Info($"{monster.Name} has {monster.CurrentHitPoints}HP left.");
+        Text.Warning($"{(critical < 10 ? "Critical! " : string.Empty)}Player {Name} attacked {monster.Name} for {damage} damage.");
 
         return damage;
     }
 
     public void TakeDamage(int damage)
     {
-        this.CurrentHitPoints -= damage;
+        CurrentHitPoints -= damage;
     }
 
     public void GainExperience(int experience)
     {
-        Console.WriteLine($"Player {this.Name} gained {experience} experience.");
-        this.Experience += experience;
+        Text.GoodNews($"Player {Name} gained {experience} experience.");
+        Experience += experience;
     }
 
     public void Get_Gold(int gold)
     {
-        this.Balance += gold;
+        Balance += gold;
+    }
+
+    public void Stats()
+    {
+        Text.Info($"Player: {Name}");
+        Text.Info($"HP: {CurrentHitPoints}/{MaximumHitPoints}");
+        Text.Info($"Experience: {Experience}");
+        Text.Info($"Gold: {Balance}");
+        Text.Info($"Weapon 1: {Weapon1.Name}");
+        if (Weapon2 != null)
+        {
+            Text.Info($"Weapon 2: {Weapon2.Name}");
+        }
+        Inv.OpenInventory();
     }
 }
