@@ -15,18 +15,20 @@ public class Quest
     public int ID;
     public string Name;
     public string Description;
-    public Location questLocation;
+    public Location? questLocation;
     public bool IsDone;
-    //public {type} Reward;
+    public Item Reward;
+    public int quantity_reward;
 
-    public Quest(int id, string name, string Description, Location location, string reward)//add reward to parameters
+    public Quest(int id, string name, string Description, Location? location, Item reward, int quantity)//add reward to parameters
     {
         this.ID = id;
         this.Name = name;
         this.Description = Description;
         this.questLocation = location;
         this.IsDone = false;
-        //this.Reward = reward;
+        this.Reward = reward;
+        this.quantity_reward = quantity;
         
     }
 
@@ -39,25 +41,35 @@ public class Quest
 
             
             //check if enough monsters have been killed
-            if (this.questLocation.MonsterLivingHere.CurrentHitPoints <= 0)
+            if (questLocation != null && questLocation.MonsterLivingHere != null && questLocation.MonsterLivingHere.CurrentHitPoints <= 0)
             {
-                System.Console.WriteLine($"you have completed the quest.");
-                System.Console.WriteLine($"take your reward.");
-                //System.Console.WriteLine($"Reward: {this.Reward}");
+                Text.GoodNews($"You have completed the quest.");
+                Text.GoodNews($"Take your reward.");
+                Text.GoodNews($"Reward: {this.Reward.Name}");
+                Text.nl();
                 this.IsDone = true;
-                //add item to inventory
+                
             }
             else 
             {
-                System.Console.WriteLine($"you started the Quest {this.Name}.");
-                System.Console.WriteLine($"description:");
-                System.Console.WriteLine($"{this.Description}");
-                System.Console.WriteLine($"go to: {this.questLocation.Name}");
+
+                Text.Info($"You started the Quest {this.Name}.");
+                Text.Warning($"Description:");
+                Text.Warning($"{this.Description}");
+                if (this.questLocation != null)
+                {
+                    Text.Warning($"Go to: \n{this.questLocation.Name}");
+                }
+                else
+                {
+                    Text.Alert("This quest has no location.");
+                }
+                Text.nl();
             }
         }
         else
         {
-            System.Console.WriteLine("You have already completed the quest for this location.");
+            Text.GoodNews("You have already completed the quest for this location.");
         }
 
 
@@ -67,13 +79,33 @@ public class Quest
     //quest rewards
     public static void completed_quests()
     {
-        System.Console.WriteLine($"Completed quests:");
+        Text.Info($"Completed quests:");
+        int count = 0;
         foreach (Quest quest in World.Quests)
         {
             if (quest.IsDone==true)
             {
-                System.Console.WriteLine($"{quest.Name}");
+                Text.Warning($"- {quest.Name}");
+            }
+            else
+            {
+                count++;
             }
         }
+        if (count == World.Quests.Count)
+        {
+            Text.Warning("No quests completed yet");
+            Text.nl();
+        }
+        
+        Text.Info($"Not completed quests:");
+        foreach (Quest quest in World.Quests)
+        {
+            if (quest.IsDone==false)
+            {
+                Text.Warning($"- {quest.Name}");
+            }
+        }
+        Text.nl();
     }
 }

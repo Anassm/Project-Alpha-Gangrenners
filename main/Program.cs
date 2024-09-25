@@ -2,6 +2,7 @@ public class Program
 {
     public static void Main()
     {
+        
         Console.Clear();
         Console.WriteLine("Welcome to Project Alpha Gangrenners");
         Console.WriteLine("------------------------------------");
@@ -13,8 +14,7 @@ public class Program
         Console.WriteLine("Good luck!");
         Console.WriteLine("------------------------------------");
         Console.WriteLine("Press any key to start the game");
-       // Console.Read();
-       // Console.Clear();
+        Console.WriteLine("");
         StartGame();
     }
 
@@ -24,7 +24,7 @@ public class Program
     {
         // ask for player name
         Console.WriteLine("Choose your name: ");
-        string name = Console.ReadLine();
+        string name = Console.ReadLine() ?? string.Empty;
 
         if (string.IsNullOrEmpty(name))
         {
@@ -36,7 +36,7 @@ public class Program
         }
 
         // create player (WHAT HP)
-        Player player = new Player(1, World.Locations[0], World.Weapons[0], 100, name);
+        Player player = new Player(100, World.Locations[0], 100, name);
         
 
         // Intro
@@ -55,21 +55,19 @@ public class Program
                 GameRunning = false;
                 break;
             }
-            Console.WriteLine("1. Change directions");
-            Console.WriteLine("2. Check inventory");
-            Console.WriteLine("3. List of quests");
-            Console.WriteLine("4. Check stats");
-            Console.WriteLine("5. Quit");
-            string choice = Console.ReadLine();
+            Text.nl();
+            Text.Options("1. Change directions");
+            Text.Options("2. Check inventory");
+            Text.Options("3. List of quests");
+            Text.Options("4. Check stats");
+            Text.Options("5. Quit");
+            string choice = Console.ReadLine() ?? string.Empty;
             if (choice == "1")
             {
                 player.ChangeDirections();
             }
             else if (choice == "2")
             {
-<<<<<<< Updated upstream
-                //player.GetInventory();
-=======
                 player.Inv.OpenInventory();
                 GroupedItem? mainitem = null;
                 Console.WriteLine("Would you like too switch your main weapon?");
@@ -160,7 +158,6 @@ public class Program
                             break;
                     };
                 }
->>>>>>> Stashed changes
             }
             else if (choice == "3")
             {
@@ -168,16 +165,16 @@ public class Program
             }
             else if (choice == "4")
             {
-                //stats   
+                player.Stats(); 
             }
             else if (choice == "5")
             {
-                Console.WriteLine("You have not completed all quests yet");
-                Console.WriteLine("Keep going!");
-                Console.WriteLine("Are you sure you want to quit?");
-                Console.WriteLine("1. Yes");
-                Console.WriteLine("2. No");
-                string quit = Console.ReadLine().ToLower();
+                
+                Text.Warning("You have not completed all quests yet");
+                Text.Warning("Are you sure you want to quit?");
+                Text.Options("1. Yes");
+                Text.Options("2. No");
+                string quit = (Console.ReadLine() ?? string.Empty).ToLower();
                 if (quit == "1" || quit == "Yes" || quit == "y")
                 {   
                     
@@ -190,7 +187,7 @@ public class Program
             }
             else
             {
-                Console.WriteLine("Invalid choice");
+                Text.Warning("Invalid choice");
             }
             
             //check if 3 quests are done
@@ -204,8 +201,8 @@ public class Program
             }
             if (countnumber == 3)
             {
-                Console.WriteLine("You have completed all quests!");
-                Console.WriteLine("You have won the game!");
+                Text.GoodNews("You have completed all quests!");
+                Text.GoodNews("You have won the game!");
                 GameRunning = false;
             }
 
@@ -217,11 +214,11 @@ public class Program
             Console.Clear();
         }
         
-        Console.WriteLine("Thank you for playing!");
-        Console.WriteLine("");
-        Console.WriteLine("");
-        Console.WriteLine("");
-        Console.ForegroundColor = ConsoleColor.DarkRed;
+        Text.Color("Thank you for playing!", ConsoleColor.Magenta);
+        Text.nl();
+        Text.nl();
+        Text.nl(); 
+        Console.ForegroundColor = ConsoleColor.Magenta;
         Console.WriteLine(" GGGGG   OOO   OOO   DDDD   BBBB   Y   Y  EEEEE ");
         Console.WriteLine("G       O   O O   O  D   D  B   B   Y Y   E     ");
         Console.WriteLine("G  GGG  O   O O   O  D   D  BBBB     Y    EEEEE ");
